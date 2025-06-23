@@ -30,6 +30,10 @@ import {
   faHome,
   faPlus,
   faUser,
+  faMusic,
+  faFire,
+  faGamepad,
+  faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ style }) => {
@@ -40,7 +44,7 @@ const Sidebar = ({ style }) => {
   useEffect(() => {
     let sideBarWidth = value.sideBarState
       ? "w-[13vw] h-[100%]"
-      : "w-[5vw] h-[100%] lg:px-2";
+      : "w-[5vw] h-[100%] ";
     setWidth(sideBarWidth);
   }, [value.sideBarState]);
 
@@ -49,9 +53,9 @@ const Sidebar = ({ style }) => {
       <div
         className={`  ${style ? style : ""} ${
           !value.deviseMobile ? width : ""
-        } `}
+        } lg:px-2 `}
       >
-        <div className="shortCutKey flex justify-between text-[10px]  items-center h-[100%] lg:flex-col lg:justify-start gap-8  box-border lg:py-2  lg:font-semibold lg:text-[0.6rem] lg:gap-0">
+        <div className="shortCutKey flex justify-between text-[0.8rem]  items-center h-[100%] lg:flex-col lg:justify-start gap-8  box-border lg:py-2  lg:font-semibold lg:text-[0.6rem] lg:gap-0">
           <div
             className={`flex flex-col justify-center items-center gap-1 cursor-pointer lg:hover:bg-gray-200 lg:w-[4.2rem] lg:rounded-xl ${
               value.sideBarState
@@ -59,7 +63,10 @@ const Sidebar = ({ style }) => {
                 : "lg:py-5 "
             }`}
           >
-            <FontAwesomeIcon className="text-[1.1rem] " icon={faHome} />
+            <FontAwesomeIcon
+              className="text-[1.3rem]  lg:text-[1.1rem]"
+              icon={faHome}
+            />
             <p>Home</p>
           </div>
           <div
@@ -69,17 +76,13 @@ const Sidebar = ({ style }) => {
                 : "lg:py-5 "
             }`}
           >
-            <FontAwesomeIcon className="text-[1.1rem] " icon={faBolt} />
+            <FontAwesomeIcon
+              className="text-[1.3rem] lg:text-[1.1rem] "
+              icon={faBolt}
+            />
             <p>Shorts</p>
           </div>
-          {value.deviseMobile && (
-            <div className="flex flex-col justify-center items-center gap-1 cursor-pointer bg-gray-200 w-[2rem] h-[2rem] rounded-full  relative left-1">
-              <FontAwesomeIcon
-                className="text-[1.1rem]  bg-gray-200"
-                icon={faPlus}
-              />
-            </div>
-          )}
+
           <div
             className={`flex flex-col justify-center items-center gap-1 cursor-pointer lg:hover:bg-gray-200 lg:w-[4.2rem]  lg:rounded-xl  ${
               value.sideBarState
@@ -87,14 +90,56 @@ const Sidebar = ({ style }) => {
                 : "lg:py-5 "
             }`}
           >
-            <img src={subscribe} alt="subscibe-icon" className="w-5 " />
+            <img src={subscribe} alt="subscibe-icon" className="w-6.5 lg:w-5" />
             <p>Subscriptions</p>
           </div>
           {!value.sideBarState && (
             <div className="flex flex-col justify-center items-center gap-1 cursor-pointer lg:hover:bg-gray-200 lg:w-[4.2rem] lg:py-5 lg:rounded-xl">
-              <FontAwesomeIcon className="text-[1.1rem] " icon={faUser} />
+              <FontAwesomeIcon
+                className="text-[1.3rem] lg:text-[1.1rem] "
+                icon={faUser}
+              />
               <p>You</p>
             </div>
+          )}
+
+          {value.sideBarState && (
+            <>
+              <p className="w-full py-[0.3px] bg-gray-300"></p>
+              <div className="w-full pt-5 ">
+                <h2 className="text-lg py-2 pl-4 font font-Roboto font-semibold">Explore</h2>
+                <div className="text-[0.8rem] w-full flex flex-col items-center">
+                  <div className="flex text-[0.9rem] lg:w-[100%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5 cursor-pointer lg:hover:bg-gray-200  lg:rounded-xl">
+                    <FontAwesomeIcon
+                      className="text-[1.3rem] lg:text-[1.1rem] "
+                      icon={faFire}
+                    />
+                    <p>Tranding</p>
+                  </div>
+                  <div className="flex text-[0.9rem] lg:w-[100%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5 cursor-pointer lg:hover:bg-gray-200  lg:rounded-xl">
+                    <FontAwesomeIcon
+                      className="text-[1.3rem] lg:text-[1.1rem] "
+                      icon={faMusic}
+                    />
+                    <p>Musice</p>
+                  </div>
+                  <div className="flex text-[0.9rem] lg:w-[100%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5 cursor-pointer lg:hover:bg-gray-200  lg:rounded-xl">
+                    <FontAwesomeIcon
+                      className="text-[1.3rem] lg:text-[1.1rem] "
+                      icon={faGamepad}
+                    />
+                    <p>Gaming</p>
+                  </div>
+                  <div className="flex text-[0.9rem] lg:w-[100%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5 cursor-pointer lg:hover:bg-gray-200  lg:rounded-xl">
+                    <FontAwesomeIcon
+                      className="text-[1.3rem] lg:text-[1.1rem] "
+                      icon={faTrophy}
+                    />
+                    <p>Sports</p>
+                  </div>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>

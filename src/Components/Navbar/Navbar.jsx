@@ -1,4 +1,4 @@
-import React , {useContext , useState} from "react";
+import React , {useContext , useEffect, useRef, useState} from "react";
 import youtubeImg from "../../assets/logo.png";
 import castIcon from "../../assets/cast.png";
 import inofacationIcon from "../../assets/notification.png";
@@ -22,8 +22,14 @@ const Navbar = () => {
 
   const { deviseMobile, sideBarState, setsideBarState } = useContext(Context);
   const [mdSearchBar , setMdSearchBar] = useState(false);
+  const inputRef = useRef();
 
 
+useEffect(() =>{
+  if(mdSearchBar && inputRef.current){
+    inputRef.current.focus();
+  }
+} , [mdSearchBar]);
 
   return (
     <nav
@@ -45,6 +51,7 @@ const Navbar = () => {
               type="text"
               placeholder="Search"
               className="border border-gray-400 flex-1 px-4 py-1.5 rounded-2xl focus:outline-1"
+              ref={inputRef}
             />
           </div>
         </div>
@@ -111,7 +118,7 @@ const Navbar = () => {
                 />
               )}
               <img
-                className="w-[1.6rem] h-[1.6rem] cursor-pointer lg:hover:bg-gray-200 lg:p-2 lg:box-content rounded-full"
+                className="w-[1.6rem] h-[1.6rem] lg:w-[1.5rem] lg:h-[1.5rem] cursor-pointer lg:hover:bg-gray-200 lg:p-2 lg:box-content rounded-full"
                 src={inofacationIcon}
                 alt="inofacationIcon"
               />
@@ -123,6 +130,7 @@ const Navbar = () => {
                   alt="searchIcon"
                   onClick={() => {
                     setMdSearchBar(true);
+                  
                   }}
                 />
               )}
