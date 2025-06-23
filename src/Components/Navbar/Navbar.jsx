@@ -35,7 +35,7 @@ const Navbar = () => {
         <div className="flex items-start pt-6 justify-between w-full gap-5 px-4 z-10 bg-white absolute top-0 left-0 h-[100vh]">
           <div className="flex w-full gap-5 items-center">
             <FontAwesomeIcon
-              className="text-[1.5rem] font-light "
+              className="text-[1.8rem] font-light "
               icon={faArrowAltCircleLeft}
               onClick={() => {
                 setMdSearchBar(false);
@@ -44,7 +44,7 @@ const Navbar = () => {
             <input
               type="text"
               placeholder="Search"
-              className="border border-gray-400 flex-1 px-4 py-0.5 rounded-2xl focus:outline-1"
+              className="border border-gray-400 flex-1 px-4 py-1.5 rounded-2xl focus:outline-1"
             />
           </div>
         </div>
@@ -65,7 +65,7 @@ const Navbar = () => {
                   }}
                 />
               )}
-              <img src={youtubeImg} alt="youtube-icon" className="w-[6rem]" />
+              <img src={youtubeImg} alt="youtube-icon" className="w-[7.5rem]" />
             </div>
           </div>
 
@@ -105,20 +105,20 @@ const Navbar = () => {
 
               {deviseMobile && (
                 <img
-                  className="w-[1.3rem] h-[1.3rem] cursor-pointer lg:hover:bg-gray-200 lg:p-2 lg:box-content rounded-full"
+                  className="w-[1.7rem] h-[1.7rem] cursor-pointer lg:hover:bg-gray-200 lg:p-2 lg:box-content rounded-full"
                   src={castIcon}
                   alt="castIcon"
                 />
               )}
               <img
-                className="w-[1.3rem] h-[1.3rem] cursor-pointer lg:hover:bg-gray-200 lg:p-2 lg:box-content rounded-full"
+                className="w-[1.6rem] h-[1.6rem] cursor-pointer lg:hover:bg-gray-200 lg:p-2 lg:box-content rounded-full"
                 src={inofacationIcon}
                 alt="inofacationIcon"
               />
 
               {deviseMobile && (
                 <img
-                  className="w-[1.1rem] h-[1.1rem] cursor-pointer lg:hover:bg-gray-200 lg:p-2 lg:box-content lg:rounded-full"
+                  className="w-[1.4rem] h-[1.4rem] cursor-pointer lg:hover:bg-gray-200 lg:p-2 lg:box-content lg:rounded-full"
                   src={searchIcon}
                   alt="searchIcon"
                   onClick={() => {
