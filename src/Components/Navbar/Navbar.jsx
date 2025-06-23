@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <nav
       className={`relative box-shasow-custom lg:px-8  w-full  flex justify-between px-4 items-center ${
-        mdSearchBar ? "" : "h-[10vh] lg:h-[8vh]"
+        mdSearchBar ? "" : "h-[8vh]"
       } z-11 `}
     >
       {mdSearchBar && (
