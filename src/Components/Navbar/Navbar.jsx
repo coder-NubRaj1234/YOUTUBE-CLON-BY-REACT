@@ -21,7 +21,7 @@ import { Context } from "../../Context/Context";
 const Navbar = () => {
 
   const { deviseMobile, sideBarState, setsideBarState } = useContext(Context);
-  const [mdSearchBar , setMdSearchBar] = useState(true);
+  const [mdSearchBar , setMdSearchBar] = useState(false);
 
 
 
