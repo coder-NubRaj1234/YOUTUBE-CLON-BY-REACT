@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+
+
+
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+
+
+  .box-shasow-custom{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+  
