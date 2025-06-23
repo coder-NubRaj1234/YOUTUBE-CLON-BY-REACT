@@ -32,7 +32,7 @@ const Navbar = () => {
       } z-11 `}
     >
       {mdSearchBar && (
-        <div className="flex items-start pt-6 justify-between w-full gap-5 px-4 z-10 bg-amber-50 absolute top-0 left-0 h-[100vh]">
+        <div className="flex items-start pt-6 justify-between w-full gap-5 px-4 z-10 bg-white absolute top-0 left-0 h-[100vh]">
           <div className="flex w-full gap-5 items-center">
             <FontAwesomeIcon
               className="text-[1.5rem] font-light "
