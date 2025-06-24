@@ -10,7 +10,7 @@ const Main = ({ deviseMobile }) => {
   return (
     <main className=" relative h[92vh] ">
       <div className="lg:pb-[0] lg:px-0 lg:flex    h-[92vh] w-full   w-[100vw] overflow-y-scroll hide-scrollbar ">
-        {window.innerWidth > 1025 && <Sidebar />}
+     
 
         <Routes>
           <Route path="/" element={<Home deviseMobile={deviseMobile} />} />

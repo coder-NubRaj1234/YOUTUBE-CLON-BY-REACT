@@ -77,18 +77,20 @@ useEffect(() =>{
           </div>
 
           {!deviseMobile && (
-            <div className="center w-[40%]">
-              <div className="search flex border-2 w-[100%] px-4  border-gray-400 py-1 rounded-3xl items-center ">
+            <div className="center w-[40%] h-full flex items-center">
+              <div className="search   flex border-2 w-[100%] pl-4  border-[#d3d3d3]  h-[65%] rounded-3xl items-center ">
                 <input
                   type="text"
                   placeholder="Search"
                   className="flex-1 outline-none"
                 />
-                <img
-                  src={searchIcon}
-                  alt="searchIcon"
-                  className="w-5 h-5 pl-5 box-content cursor-pointer"
-                />
+                <div className="h-full w-[10%]  box-content hover:bg-[#f1eded] bg-[#f8f8f8] border border-l border-[#d3d3d3] rounded-r-3xl flex justify-center items-center">
+                  <img
+                    src={searchIcon}
+                    alt="searchIcon"
+                    className="w-5 h-5 pl-5 box-content cursor-pointer pr-3"
+                  />
+                </div>
               </div>
             </div>
           )}
@@ -130,7 +132,6 @@ useEffect(() =>{
                   alt="searchIcon"
                   onClick={() => {
                     setMdSearchBar(true);
-                  
                   }}
                 />
               )}

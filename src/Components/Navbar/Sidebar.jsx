@@ -105,7 +105,7 @@ const Sidebar = ({ style }) => {
 
           {value.sideBarState && (
             <>
-              <p className="w-full py-[0.3px] bg-gray-300"></p>
+              <p className="mt-5 w-full py-[0.3px] bg-gray-300"></p>
               <div className="w-full pt-5 ">
                 <h2 className="text-lg py-2 pl-4 font font-Roboto font-semibold">
                   Explore
