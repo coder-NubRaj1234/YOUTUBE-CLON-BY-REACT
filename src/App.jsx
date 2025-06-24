@@ -24,7 +24,7 @@ useEffect(() =>{
         value={{ deviseMobile, setdeviseMobile, sideBarState, setsideBarState }}
       >
         <Navbar />
-        <Main />
+        <Main deviseMobile={deviseMobile} />
       </Context.Provider>
     </>
   );

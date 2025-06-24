@@ -53,7 +53,7 @@ const Sidebar = ({ style }) => {
       <div
         className={`  ${style ? style : ""} ${
           !value.deviseMobile ? width : ""
-        } lg:px-2 `}
+        } lg:px-2  z-10 bg-white box-shasow-custom`}
       >
         <div className="shortCutKey flex justify-between text-[0.8rem]  items-center h-[100%] lg:flex-col lg:justify-start gap-8  box-border lg:py-2  lg:font-semibold lg:text-[0.6rem] lg:gap-0">
           <div
@@ -107,7 +107,9 @@ const Sidebar = ({ style }) => {
             <>
               <p className="w-full py-[0.3px] bg-gray-300"></p>
               <div className="w-full pt-5 ">
-                <h2 className="text-lg py-2 pl-4 font font-Roboto font-semibold">Explore</h2>
+                <h2 className="text-lg py-2 pl-4 font font-Roboto font-semibold">
+                  Explore
+                </h2>
                 <div className="text-[0.8rem] w-full flex flex-col items-center">
                   <div className="flex text-[0.9rem] lg:w-[100%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5 cursor-pointer lg:hover:bg-gray-200  lg:rounded-xl">
                     <FontAwesomeIcon
