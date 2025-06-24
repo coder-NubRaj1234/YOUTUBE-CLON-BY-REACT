@@ -47,7 +47,7 @@ const VideoPlay = () => {
               </div>
             </div>
             <div>
-              <button className="bg-black px-4 py-1 rounded-lg text-white font-semibold font-Roboto ">
+              <button className="bg-black px-5 py-1.5 rounded-lg text-white font-semibold font-Roboto ">
                 Subscribe
               </button>
             </div>
