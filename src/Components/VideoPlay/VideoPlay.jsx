@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   faThumbsUp,
   faThumbsDown,
   faDownload,
   faShare,
-  faBookmark
+  faBookmark,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,6 +15,13 @@ import profile_img from "../../assets/jack.png";
 import Video from "../../assets/video.mp4";
 
 const VideoPlay = () => {
+  const [commentShow, setCommentShow] = useState(false);
+  const [commentHeight, setSetCommentHeight] = useState("h-[5rem]");
+
+  useEffect(() => {
+    setSetCommentHeight(commentShow ? "min-h-[5rem]" : "h-[5rem]");
+  }, [commentShow]);
+
   return (
     <div className="video_play overflow-y-scroll pb-[8vh]">
       <video src={Video} controls className="aspact-video w-full"></video>
@@ -54,13 +62,13 @@ const VideoPlay = () => {
           </div>
           <div className="right flex py-5 justify-between">
             <p className="video_info_icon cursor-pointer">
-              <p className="">
+              <span className="">
                 <FontAwesomeIcon icon={faThumbsUp} />
-              </p>
+              </span>
               <span className="text-[0.8rem] ">111K</span>|
-              <p className="cursor-pointer">
+              <span className="cursor-pointer">
                 <FontAwesomeIcon icon={faThumbsDown} />
-              </p>
+              </span>
             </p>
             <p className="video_info_icon cursor-pointer">
               <FontAwesomeIcon icon={faShare} />
@@ -77,8 +85,36 @@ const VideoPlay = () => {
           </div>
         </div>
 
-        <div className="comments-container bg-[#f2f2f2] min-h-[5rem] p-2 rounded-xl">
-          <h2 className="text-sm font-Roboto">Commets 10k</h2>
+        <div
+          className={`comments-container bg-[#f2f2f2] ${commentHeight}  p-2 rounded-xl ${
+            commentShow ? "min-h-[5rem]" : "overflow-hidden"
+          }`}
+          onClick={() => {
+            if (!commentShow) {
+              setCommentShow(true);
+            }
+          }}
+        >
+          <h2
+            className={`text-sm font-Roboto  ${
+              commentShow ? "h-[5rem] border-b-1 border-[#5e5e5e]" : ""
+            }`}
+          >
+            <div className="flex justify-between">
+              <span>Commets 10k</span>
+              {commentShow && (
+                <span>
+                  <FontAwesomeIcon
+                    onClick={() => {
+                      setCommentShow(false);
+                    }}
+                    className="text-2xl"
+                    icon={faXmark}
+                  />
+                </span>
+              )}
+            </div>
+          </h2>
           <div className="comments py-5 flex flex-col gap-8">
             <div className="comment flex gap-3">
               <div>
@@ -89,33 +125,37 @@ const VideoPlay = () => {
                 />
               </div>
               <div className="comment-info flex flex-col gap-1.5 ">
-                <div className="flex gap-4 text-[#5a5a5a] text-sm">
-                  <p>Nithesh Rajput</p>
-                  <span> &bull; 1 day ago</span>
-                </div>
-                <p className="text-[1rem] font-Roboto">
+                {commentShow && (
+                  <div className="flex gap-4 text-[#5a5a5a] text-sm">
+                    <p>Nithesh Rajput</p>
+                    <span> &bull; 1 day ago</span>
+                  </div>
+                )}
+                <p className="text-[1rem] font-Roboto line-clamp-1">
                   This video is very help video for begginer . You can join this
                   project to skill up your skill
                 </p>
-                <div className="flex items-center  gap-5 text-lg">
-                  <p className="flex gap-2 items-center cursor-pointer ">
-                    <FontAwesomeIcon className="" icon={faThumbsUp} />
-                    <span className="text-sm font-Roboto italic">500</span>
-                  </p>
-                  <p>
-                    {" "}
-                    <FontAwesomeIcon
-                      className="cursor-pointer"
-                      icon={faThumbsDown}
-                    />
-                  </p>
-                  <p>
-                    {" "}
-                    <span className="text-sm font-Roboto italic cursor-pointer">
-                      Reply
-                    </span>
-                  </p>
-                </div>
+                {commentShow && (
+                  <div className="flex items-center  gap-5 text-lg">
+                    <p className="flex gap-2 items-center cursor-pointer ">
+                      <FontAwesomeIcon className="" icon={faThumbsUp} />
+                      <span className="text-sm font-Roboto italic">500</span>
+                    </p>
+                    <p>
+                      {" "}
+                      <FontAwesomeIcon
+                        className="cursor-pointer"
+                        icon={faThumbsDown}
+                      />
+                    </p>
+                    <p>
+                      {" "}
+                      <span className="text-sm font-Roboto italic cursor-pointer">
+                        Reply
+                      </span>
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
             <div className="comment flex gap-3">
