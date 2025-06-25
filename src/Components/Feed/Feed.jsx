@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from "react";
 
 import thumbane1 from "../../assets/thumbnail1.png";
 import thumbane2 from "../../assets/thumbnail2.png";
@@ -10,12 +10,21 @@ import thumbane7 from "../../assets/thumbnail7.png";
 import thumbane8 from "../../assets/thumbnail8.png";
 
 import chinal_Image from "../../assets/tom.png";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { Context } from "../../Context/Context";
 
-const Feed = ({ deviseMobile }) => {
+const Feed = () => {
+  const { deviseMobile, videoOpen, setVideoOpen } = useContext(Context);
+
   return (
-    <div className=" sm:justify-center sm:items-center   flex lg:gap-4  flex-wrap gap-1 w-[100%] sm:gap-2  sm:pt-5 box-c ">
-      <Link to={`video`} className="lg:w-[30%] lg:h-auto sm:w-[47%] cursor-pointer   w-[100vw] min-h-[17rem]  ">
+    <div className=" sm:justify-center sm:items-center   flex lg:gap-4  flex-wrap gap-1 w-[100%] sm:gap-2  sm:pt-5 ">
+      <Link
+        to={`video`}
+        className="lg:w-[30%] lg:h-auto sm:w-[47%] cursor-pointer   w-[100vw] min-h-[17rem]  "
+        onClick={() => {
+          setVideoOpen(true);
+        }}
+      >
         <img
           src={thumbane1}
           alt={thumbane1}
@@ -33,7 +42,9 @@ const Feed = ({ deviseMobile }) => {
             </h2>
             <p className="lg:text-[0.9rem]  lg:font-semibold  font-medium  text-[0.8rem] text-[#555] lg:flex flex-col">
               <span className=" ">Greate Stack</span>{" "}
-              <span className="italic">{deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago</span>
+              <span className="italic">
+                {deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago
+              </span>
             </p>
           </div>
         </div>
@@ -56,7 +67,9 @@ const Feed = ({ deviseMobile }) => {
             </h2>
             <p className="lg:text-[0.9rem]  lg:font-semibold  font-medium  text-[0.8rem] text-[#555] lg:flex flex-col">
               <span className=" ">Greate Stack</span>{" "}
-              <span className="italic">{deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago</span>
+              <span className="italic">
+                {deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago
+              </span>
             </p>
           </div>
         </div>
@@ -79,7 +92,9 @@ const Feed = ({ deviseMobile }) => {
             </h2>
             <p className="lg:text-[0.9rem]  lg:font-semibold  font-medium  text-[0.8rem] text-[#555] lg:flex flex-col">
               <span className=" ">Greate Stack</span>{" "}
-              <span className="italic">{deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago</span>
+              <span className="italic">
+                {deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago
+              </span>
             </p>
           </div>
         </div>
@@ -102,7 +117,9 @@ const Feed = ({ deviseMobile }) => {
             </h2>
             <p className="lg:text-[0.9rem]  lg:font-semibold  font-medium  text-[0.8rem] text-[#555] lg:flex flex-col">
               <span className=" ">Greate Stack</span>{" "}
-              <span className="italic">{deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago</span>
+              <span className="italic">
+                {deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago
+              </span>
             </p>
           </div>
         </div>
@@ -125,7 +142,9 @@ const Feed = ({ deviseMobile }) => {
             </h2>
             <p className="lg:text-[0.9rem]  lg:font-semibold  font-medium  text-[0.8rem] text-[#555] lg:flex flex-col">
               <span className=" ">Greate Stack</span>{" "}
-              <span className="italic">{deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago</span>
+              <span className="italic">
+                {deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago
+              </span>
             </p>
           </div>
         </div>
@@ -148,7 +167,9 @@ const Feed = ({ deviseMobile }) => {
             </h2>
             <p className="lg:text-[0.9rem]  lg:font-semibold  font-medium  text-[0.8rem] text-[#555] lg:flex flex-col">
               <span className=" ">Greate Stack</span>{" "}
-              <span className="italic">{deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago</span>
+              <span className="italic">
+                {deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago
+              </span>
             </p>
           </div>
         </div>
@@ -171,7 +192,9 @@ const Feed = ({ deviseMobile }) => {
             </h2>
             <p className="lg:text-[0.9rem]  lg:font-semibold  font-medium  text-[0.8rem] text-[#555] lg:flex flex-col">
               <span className=" ">Greate Stack</span>{" "}
-              <span className="italic">{deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago</span>
+              <span className="italic">
+                {deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago
+              </span>
             </p>
           </div>
         </div>
@@ -194,7 +217,9 @@ const Feed = ({ deviseMobile }) => {
             </h2>
             <p className="lg:text-[0.9rem]  lg:font-semibold  font-medium  text-[0.8rem] text-[#555] lg:flex flex-col">
               <span className=" ">Greate Stack</span>{" "}
-              <span className="italic">{deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago</span>
+              <span className="italic">
+                {deviseMobile ? <>&bull;</> : ""} 200k &bull; 13 hours ago
+              </span>
             </p>
           </div>
         </div>
@@ -203,4 +228,4 @@ const Feed = ({ deviseMobile }) => {
   );
 };
 
-export default Feed
+export default Feed;

@@ -6,6 +6,7 @@ import { Context } from "./Context/Context";
 const App = () => {
   const [deviseMobile, setdeviseMobile] = useState(true);
   const [sideBarState, setsideBarState] = useState(false);
+  const [videoOpen , setVideoOpen] =  useState(false)
 
 
 useEffect(() =>{
@@ -21,9 +22,16 @@ useEffect(() =>{
   return (
     <>
       <Context.Provider
-        value={{ deviseMobile, setdeviseMobile, sideBarState, setsideBarState }}
+        value={{
+          deviseMobile,
+          setdeviseMobile,
+          sideBarState,
+          setsideBarState,
+          videoOpen,
+          setVideoOpen,
+        }}
       >
-        <Navbar />
+        {!videoOpen && <Navbar />}
         <Main deviseMobile={deviseMobile} />
       </Context.Provider>
     </>

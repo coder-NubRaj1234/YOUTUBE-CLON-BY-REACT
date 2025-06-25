@@ -1,12 +1,14 @@
-import React from 'react'
-import VideoPlay from '../../Components/VideoPlay/VideoPlay'
+import React from "react";
+import VideoPlay from "../../Components/VideoPlay/VideoPlay";
 
-const Videos = () => {
+const Videos = ({ deviseMobile }) => {
   return (
     <>
-      <div><VideoPlay /></div>
+      <div>
+        <VideoPlay deviseMobile={deviseMobile} />
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Videos
+export default Videos;
