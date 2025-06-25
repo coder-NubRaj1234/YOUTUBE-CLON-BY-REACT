@@ -16,10 +16,10 @@ import Video from "../../assets/video.mp4";
 
 const VideoPlay = () => {
   const [commentShow, setCommentShow] = useState(false);
-  const [commentHeight, setSetCommentHeight] = useState("h-[5rem]");
+  const [commentHeight, setSetCommentHeight] = useState("h-[6rem]");
 
   useEffect(() => {
-    setSetCommentHeight(commentShow ? "min-h-[5rem]" : "h-[5rem]");
+    setSetCommentHeight(commentShow ? "min-h-[5rem]" : "h-[6rem]");
   }, [commentShow]);
 
   return (
