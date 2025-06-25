@@ -529,6 +529,82 @@ const VideoPlay = ({ deviseMobile }) => {
                 </div>
               </div>
             </div>
+            <div className="comment flex gap-3">
+              <div>
+                <img
+                  src={profile_img}
+                  alt="profile"
+                  className="rounded-full w-15 cursor-pointer  sm:w-8"
+                />
+              </div>
+              <div className="comment-info flex flex-col gap-1.5 ">
+                <div className="flex gap-4 text-[#5a5a5a] text-sm">
+                  <p>Nithesh Rajput</p>
+                  <span> &bull; 1 day ago</span>
+                </div>
+                <p className="text-[1rem] font-Roboto">
+                  This video is very help video for begginer . You can join this
+                  project to skill up your skill
+                </p>
+                <div className="flex items-center  gap-5 text-lg">
+                  <p className="flex gap-2 items-center cursor-pointer ">
+                    <FontAwesomeIcon className="" icon={faThumbsUp} />
+                    <span className="text-sm font-Roboto italic">500</span>
+                  </p>
+                  <p>
+                    {" "}
+                    <FontAwesomeIcon
+                      className="cursor-pointer"
+                      icon={faThumbsDown}
+                    />
+                  </p>
+                  <p>
+                    {" "}
+                    <span className="text-sm font-Roboto italic cursor-pointer">
+                      Reply
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="comment flex gap-3">
+              <div>
+                <img
+                  src={profile_img}
+                  alt="profile"
+                  className="rounded-full w-15 cursor-pointer  sm:w-8"
+                />
+              </div>
+              <div className="comment-info flex flex-col gap-1.5 ">
+                <div className="flex gap-4 text-[#5a5a5a] text-sm">
+                  <p>Nithesh Rajput</p>
+                  <span> &bull; 1 day ago</span>
+                </div>
+                <p className="text-[1rem] font-Roboto">
+                  This video is very help video for begginer . You can join this
+                  project to skill up your skill
+                </p>
+                <div className="flex items-center  gap-5 text-lg">
+                  <p className="flex gap-2 items-center cursor-pointer ">
+                    <FontAwesomeIcon className="" icon={faThumbsUp} />
+                    <span className="text-sm font-Roboto italic">500</span>
+                  </p>
+                  <p>
+                    {" "}
+                    <FontAwesomeIcon
+                      className="cursor-pointer"
+                      icon={faThumbsDown}
+                    />
+                  </p>
+                  <p>
+                    {" "}
+                    <span className="text-sm font-Roboto italic cursor-pointer">
+                      Reply
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
