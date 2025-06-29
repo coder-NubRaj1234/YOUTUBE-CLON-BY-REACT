@@ -43,7 +43,7 @@ const VideoPlay = ({ deviseMobile }) => {
   }, [deviseMobile]);
 
   return (
-    <div className="video_play md:w-[65%] hide-scrollbar overflow-y-scroll min-h-[100vh]   w-[100vw] flex flex-col  ">
+    <div className="video_play md:w-[65%] hide-scrollbar overflow-y-scroll min-h-[92vh]   w-[100vw] flex flex-col  ">
       <video
         ref={videoRef}
         src={Video}
