@@ -30,7 +30,7 @@ const Feed = () => {
           alt={thumbane1}
           className=" lg:h-auto w-[100vw] h-[75%]   sm:rounded-xl"
         />
-        <div className="flex  gap-5 px-2 py-2 items-center ">
+        <div className="flex  gap-5 px-2 py-2 ">
           <img
             src={chinal_Image}
             alt="chinal_img"

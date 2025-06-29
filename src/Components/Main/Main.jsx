@@ -7,7 +7,7 @@ import { Context } from "../../Context/Context";
 
 
 const Main = ({ deviseMobile }) => {
-  const sideBarStyleMin = "absolute bottom-0 w-full h-[8vh]  box-border px-4";
+  const sideBarStyleMin = "fixed bottom-0 w-full h-[8vh]  box-border px-4";
 
   const { videoOpen, setVideoOpen } = useContext(Context);
   
