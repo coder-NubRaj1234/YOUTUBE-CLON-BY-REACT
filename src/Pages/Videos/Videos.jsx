@@ -10,9 +10,12 @@ const Videos = ({ deviseMobile }) => {
       useContext(Context);
   return (
     <>
-      <div className="flex w-[100vw] box-border hide-scrollbar h-[92vh]  flex-wrap justify-between  md:px-[6%] md:py-[1.5%]">
+      <div className="md:flex  flex w-[100vw] box-border hide-scrollbar h-[92vh]  flex-wrap justify-between  md:px-[6%] md:py-[1.5%]">
+
         <VideoPlay deviseMobile={deviseMobile} />
-        {(!commentShow && !showDiscription) && <Recommented />}
+
+        {((!commentShow && !showDiscription) || !deviseMobile) && <Recommented />}
+
       </div>
     </>
   );
