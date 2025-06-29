@@ -15,9 +15,9 @@ const Main = ({ deviseMobile }) => {
 
 
   return (
-    <main className=" relative h[92vh] bg-amber-700 z-12 ">
+    <main className=" relative h[92vh]  ">
       <div
-        className={`lg:pb-[0] lg:px-0 lg:flex  bg-[#f9f9f9]   w-full   w-[100vw] overflow-y-scroll hide-scrollbar ${
+        className={`lg:pb-[0] lg:px-0 lg:flex    h-[100%]   w-[100vw] hide-scrollbar ${
           !videoOpen ? "h-[92vh]" : ""
         } `}
       >
