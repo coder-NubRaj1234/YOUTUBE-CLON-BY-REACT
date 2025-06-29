@@ -6,7 +6,11 @@ import { Context } from "./Context/Context";
 const App = () => {
   const [deviseMobile, setdeviseMobile] = useState(true);
   const [sideBarState, setsideBarState] = useState(false);
-  const [videoOpen , setVideoOpen] =  useState(false)
+  const [videoOpen , setVideoOpen] =  useState(false);
+
+
+    const [commentShow, setCommentShow] = useState(false);
+    const [showDiscription, setShowDiscription] = useState(false);
 
 
 useEffect(() =>{
@@ -29,9 +33,13 @@ useEffect(() =>{
           setsideBarState,
           videoOpen,
           setVideoOpen,
+          commentShow,
+          setShowDiscription,
+          showDiscription,
+          setCommentShow,
         }}
       >
-       <Navbar />
+        <Navbar />
         <Main deviseMobile={deviseMobile} />
       </Context.Provider>
     </>

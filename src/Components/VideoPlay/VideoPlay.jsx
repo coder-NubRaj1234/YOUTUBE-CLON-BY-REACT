@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef  , useContext} from "react";
 
 import {
   faThumbsUp,
@@ -14,12 +14,15 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profile_img from "../../assets/jack.png";
 
+import { Context } from "../../Context/Context";
+
 import Video from "../../assets/video.mp4";
 
 const VideoPlay = ({ deviseMobile }) => {
-  const [commentShow, setCommentShow] = useState(false);
+  const { commentShow, setCommentShow, showDiscription, setShowDiscription } =
+    useContext(Context);
+
   const [commentHeight, setSetCommentHeight] = useState("h-[6rem]");
-  const [showDiscription, setShowDiscription] = useState(false);
   const [showStyle, setShowStyle] = useState("");
 
   const videoRef = useRef("");
