@@ -15,15 +15,24 @@ const Main = ({ deviseMobile }) => {
 
 
   return (
-    <main className=" relative h[92vh] ">
-      <div className={`lg:pb-[0] lg:px-0 lg:flex     w-full   w-[100vw] overflow-y-scroll hide-scrollbar ${!videoOpen ? "h-[92vh]" : ""} `}>
+    <main className=" relative h[92vh] bg-amber-700 z-12 ">
+      <div
+        className={`lg:pb-[0] lg:px-0 lg:flex  bg-[#f9f9f9]   w-full   w-[100vw] overflow-y-scroll hide-scrollbar ${
+          !videoOpen ? "h-[92vh]" : ""
+        } `}
+      >
         <Routes>
           <Route path="/" element={<Home deviseMobile={deviseMobile} />} />
-          <Route path="/video" element={<Videos  deviseMobile = { deviseMobile }/>} />
+          <Route
+            path="/video"
+            element={<Videos deviseMobile={deviseMobile} />}
+          />
         </Routes>
       </div>
 
-      {window.innerWidth < 1025 && !videoOpen &&<Sidebar style={sideBarStyleMin} />}
+      {window.innerWidth < 1025 && !videoOpen && (
+        <Sidebar style={sideBarStyleMin} />
+      )}
     </main>
   );
 };

@@ -31,7 +31,7 @@ useEffect(() =>{
           setVideoOpen,
         }}
       >
-        {!videoOpen && <Navbar />}
+       <Navbar />
         <Main deviseMobile={deviseMobile} />
       </Context.Provider>
     </>

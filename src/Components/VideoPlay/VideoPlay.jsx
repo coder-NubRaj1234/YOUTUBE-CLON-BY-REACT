@@ -43,13 +43,14 @@ const VideoPlay = ({ deviseMobile }) => {
   }, [deviseMobile]);
 
   return (
-    <div className="video_play overflow-y-scroll h-[100vh]  w-[100vw] flex flex-col  ">
+    <div className="video_play md:w-[65%] hide-scrollbar overflow-y-scroll min-h-[100vh]   w-[100vw] flex flex-col  ">
       <video
         ref={videoRef}
         src={Video}
         controls
-        className="aspact-video w-full"
+        className="md:rounded-2xl aspact-video w-full "
       ></video>
+
       <div
         className={`vidoe_info px-2 py-5  sm:flex sm:flex-col flex-1 overflow-y-hidden sm:overflow-y-visible relative`}
       >
@@ -60,7 +61,9 @@ const VideoPlay = ({ deviseMobile }) => {
 
         {/* discription */}
         <div
-          className={`discription sm:order-3 md:my-2 w-full ${
+          className={` ${
+            !showDiscription && "cursor-pointer "
+          } md:px-4 md:rounded-2xl md:bg-[#f2f2f2] discription sm:order-3 md:my-2 w-full ${
             showDiscription && deviseMobile && showStyle
           }`}
           onClick={() => {
@@ -126,31 +129,51 @@ const VideoPlay = ({ deviseMobile }) => {
               </div>
             </div>
           )}
-          {!showDiscription && (
-            <div className="py-2 text-[0.8rem] text-[#5a5a5a] italic md:text-[1rem] md:font-semibold md:text-black flex  gap-2">
-              <div className="views-tiem">
-                <span className="font-semibold">
-                  100k{" "}
+          {(!showDiscription || !deviseMobile) && (
+            <div className="md:text-[1rem] md:gap-1 md:font-medium md:flex-col py-2 text-[0.8rem] text-[#5a5a5a]  md:text-[1rem] md:font-semibold md:text-black flex  gap-2">
+              <div className="views-tiem flex md:flex-row italic items-center ">
+                <span className="font-semibold flex gap-1 ">
+                  100k
                   <span className="font-medium md:font-semibold">views</span>
                 </span>
+
                 <span className="pl-2"> 5 mo ago</span>
+
+                {!deviseMobile && (
+                  <p className="flex gap-2 items-center mx-5  justify-center">
+                    <span className=" text-[#626262]">#GreateStacl</span>
+                    <span className=" text-[#626262]">#react js</span>
+                    <span className=" text-[#626262]">#wevdevelopment</span>
+                  </p>
+                )}
               </div>
 
-              <span className="text-black font-semibold pl-2 cursor-pointer">
-                ...more
-              </span>
+              {!deviseMobile && (
+                <p className="font-normal font-Roboto ">
+                  Learn How to crate YouTube clone using React JS and YouTube
+                  Data API. Build website like YouTube with React JS. React JS
+                  project for beginners.
+                </p>
+              )}
+              {!showDiscription && (
+                <span className="text-black font-semibold pl-2 cursor-pointer">
+                  ...more
+                </span>
+              )}
             </div>
           )}
 
           {showDiscription && (
-            <div className="extrate-info bg-[#f2f2f2] rounded-2xl p-2 text-[0.7rem] font-inter">
-              <p>
-                Learn How to crate YouTube clone using React JS and YouTube Data
-                API. Build website like YouTube with React JS. React JS project
-                for beginners.
-              </p>
+            <div className=" md:text-[0.9rem] extrate-info bg-[#f2f2f2] rounded-2xl p-2 text-[0.7rem] font-inter">
+              {deviseMobile && (
+                <p>
+                  Learn How to crate YouTube clone using React JS and YouTube
+                  Data API. Build website like YouTube with React JS. React JS
+                  project for beginners.
+                </p>
+              )}
 
-              <div className="py-5">
+              <div className="py-5 ">
                 <div className="flex flex-col gap-1">
                   <p>
                     <span>👉 Live Preview:</span>
@@ -189,39 +212,60 @@ const VideoPlay = ({ deviseMobile }) => {
                       <img
                         src={profile_img}
                         alt="profile_img"
-                        className="w-8 rounded-full "
+                        className="w-8 rounded-full md:w-10 "
                       />
                     </div>
                     <div className="flex  text-[0.7rem] font-Roboto font-Roboto   flex-col">
-                      <p className=" text-[0.9rem] ">Greate Stack</p>
-                      <p className="after:content-['subscribers'] font-normal text-[#5e5e5e] after:pl-1">
+                      <p className=" text-[0.9rem] md:text-[1.1rem] md:font-semibold">
+                        Greate Stack
+                      </p>
+                      <p className="md:text-[0.8rem] after:content-['subscribers'] font-normal text-[#5e5e5e] after:pl-1">
                         125K
                       </p>
                     </div>
                   </div>
                   <div>
-                    <button
-                      className="bg-black px-5 py-1.5 rounded-full text-white font-semibold font-Roboto cursor-pointer text-[0.8rem]
+                    {deviseMobile && (
+                      <button
+                        className="bg-black px-5 py-1.5 rounded-full text-white font-semibold font-Roboto cursor-pointer text-[0.8rem]
               "
-                    >
-                      Subscribe
-                    </button>
+                      >
+                        Subscribe
+                      </button>
+                    )}
                   </div>
                 </div>
 
-                <div className="flex gap-4 ">
-                  <p className="flex gap-2 px-3 text-[0.8rem] border-1 border-gray-300 rounded-full py-2 items-center  cursor-pointer hover:bg-[#f2f2f2]">
+                <div className="flex gap-4 flex-wrap">
+                  <p className="md:hover:bg-gray-300 flex gap-2 px-3 text-[0.8rem] border-1 border-gray-300 rounded-full py-2 items-center  cursor-pointer hover:bg-[#f2f2f2]">
                     <FontAwesomeIcon
                       className="text-[1rem]"
                       icon={faCirclePlay}
                     />
                     <span>Videos</span>
                   </p>
-                  <p className="flex gap-2 px-3 text-[0.8rem] border-1 border-gray-300 rounded-full py-2 items-center cursor-pointer hover:bg-[#f2f2f2]">
+                  <p className="md:hover:bg-gray-300 flex gap-2 px-3 text-[0.8rem] border-1 border-gray-300 rounded-full py-2 items-center cursor-pointer hover:bg-[#f2f2f2]">
                     <FontAwesomeIcon className="text-[1rem]" icon={faUser} />
                     <span>About</span>
                   </p>
                 </div>
+
+                {!deviseMobile && (
+                  <p className="font-Roboto text-[0.9rem] font-semibold mt-10 ">
+                    <span
+                      className="cursor-pointer "
+                      onClick={() => {
+                        if (showDiscription) {
+                          setShowDiscription(false);
+                        }
+                        console.log(showDiscription);
+                      }}
+                    >
+                      {" "}
+                      See Less
+                    </span>
+                  </p>
+                )}
               </div>
             </div>
           )}
@@ -281,7 +325,7 @@ const VideoPlay = ({ deviseMobile }) => {
         </div>
         {/* comment */}
         <div
-          className={`comments-container rounded-2xl sm:order-4 bg-[#f2f2f2]   ${commentHeight}  px-2 rounded-xl ${
+          className={` md:bg-transparent comments-container rounded-2xl sm:order-4 bg-[#f2f2f2]   ${commentHeight}  px-2 rounded-xl ${
             commentShow
               ? `min-h-[5rem] ${commentShow && deviseMobile && showStyle} `
               : "overflow-hidden"
@@ -293,7 +337,7 @@ const VideoPlay = ({ deviseMobile }) => {
           }}
         >
           <div
-            className={`lg:h-[6rem] h-[5rem]  border-b-1 flex flex-col sticky top-0 left-0 pt-5 box-content ${
+            className={`md:bg-transparent md:static lg:h-[6rem] h-[5rem]  border-b-1 flex flex-col sticky top-0 left-0 pt-5 box-content ${
               commentShow && deviseMobile ? "bg-white" : "bg-[#f2f2f2]"
             }`}
           >
@@ -552,14 +596,12 @@ const VideoPlay = ({ deviseMobile }) => {
                     <span className="text-sm font-Roboto italic">500</span>
                   </p>
                   <p>
-                    {" "}
                     <FontAwesomeIcon
                       className="cursor-pointer"
                       icon={faThumbsDown}
                     />
                   </p>
                   <p>
-                    {" "}
                     <span className="text-sm font-Roboto italic cursor-pointer">
                       Reply
                     </span>
