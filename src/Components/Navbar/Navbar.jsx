@@ -20,8 +20,9 @@ import { Context } from "../../Context/Context";
 
 const Navbar = () => {
 
-  const { deviseMobile, sideBarState, setsideBarState } = useContext(Context);
-  const [mdSearchBar , setMdSearchBar] = useState(false);
+  const { deviseMobile, sideBarState, setsideBarState, mdSearchBar , setMdSearchBar } =
+    useContext(Context);
+ 
   const inputRef = useRef();
 
 
@@ -38,7 +39,7 @@ useEffect(() =>{
       } z-11 `}
     >
       {mdSearchBar && (
-        <div className="flex items-start pt-6 justify-between w-full gap-5 px-4 z-10 bg-white absolute top-0 left-0 h-[100vh]">
+        <div className="search_section flex items-start pt-6 justify-between w-full gap-5 px-4 z-10 bg-white absolute top-0 left-0 h-[100vh]">
           <div className="flex w-full gap-5 items-center">
             <FontAwesomeIcon
               className="text-[1.8rem] font-light "

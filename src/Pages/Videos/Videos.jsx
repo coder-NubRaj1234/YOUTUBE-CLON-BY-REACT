@@ -19,7 +19,7 @@ const Videos = ({ deviseMobile }) => {
 
   return (
     <>
-      <div className="md:flex  flex w-[100vw] box-border hide-scrollbar h-[92vh]  flex-wrap justify-between  md:px-[6%] md:py-[1.5%]">
+      <div className="md:flex  flex w-[100vw] box-border hide-scrollbar h-[100%]  flex-wrap justify-between  md:px-[6%] md:pt-[1.5%]">
         <VideoPlay deviseMobile={deviseMobile} location={useLocation()} />
 
         {((!commentShow && !showDiscription) || !deviseMobile) && (

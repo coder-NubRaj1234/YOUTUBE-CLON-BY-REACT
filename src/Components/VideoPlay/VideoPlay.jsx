@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef  , useContext} from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import Recommented from "../Recommented/Recommented";
 
 import {
   faThumbsUp,
@@ -47,20 +48,17 @@ const VideoPlay = ({ deviseMobile }) => {
 
   return (
     <div
-      className={`video_play relative md:w-[65%] hide-scrollbar overflow-y-scroll     w-[100vw] flex flex-col  ${
-        deviseMobile && (commentShow || showDiscription)
-          ? "h-[100%]"
-          : ""
+      className={`video_play md:flex  relative  md:w-[65%] hide-scrollbar overflow-y-scroll     w-[100vw] flex flex-col  ${
+        deviseMobile && (commentShow || showDiscription) ? "h-[100%]" : ""
       }
       
-      ${!deviseMobile && "h-[100%]"}`}
-
+      ${!deviseMobile && "h-[100%] "}`}
     >
       <video
         ref={videoRef}
         src={Video}
         controls
-        className="md:rounded-2xl aspact-video w-full "
+        className="md:rounded-2xl aspact-video w-full   "
       ></video>
 
       <div
@@ -81,7 +79,7 @@ const VideoPlay = ({ deviseMobile }) => {
           onClick={() => {
             if (!showDiscription) {
               setShowDiscription(true);
-            };
+            }
           }}
         >
           {deviseMobile && showDiscription && (
