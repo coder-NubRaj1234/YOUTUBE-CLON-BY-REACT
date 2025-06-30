@@ -6,8 +6,8 @@ import { Context } from "../../Context/Context";
 import { useLocation } from "react-router-dom";
 
 const Videos = ({ deviseMobile }) => {
-  const { commentShow, setCommentShow, showDiscription, setShowDiscription } =
-  useContext(Context);
+  const { commentShow, setCommentShow, showDiscription, setShowNavBar } =
+    useContext(Context);
   
   const location = useLocation();
 
