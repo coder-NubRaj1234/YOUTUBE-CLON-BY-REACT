@@ -11,11 +11,12 @@ const Videos = ({ deviseMobile }) => {
   
   const location = useLocation();
 
-  useEffect(() => {
-
-    console.log(location.pathname);
-
-  }, [location]);
+ 
+   useEffect(() => {
+     if(location.pathname == "/video" ){
+       setShowNavBar(false);
+     }     
+   }, [location]);
 
   return (
     <>
