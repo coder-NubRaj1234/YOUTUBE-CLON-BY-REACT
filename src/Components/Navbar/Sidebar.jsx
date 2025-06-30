@@ -53,7 +53,7 @@ const Sidebar = ({ style }) => {
       <div
         className={`  ${style ? style : ""} ${
           !value.deviseMobile ? width : ""
-        } lg:px-2  z-10 bg-white box-shasow-custom`}
+        } lg:px-2  z-100 bg-white box-shasow-custom`}
       >
         <div className="shortCutKey flex justify-between text-[0.8rem]  items-center h-[100%] lg:flex-col lg:justify-start gap-8  box-border lg:py-2  lg:font-semibold lg:text-[0.6rem] lg:gap-0">
           <div
