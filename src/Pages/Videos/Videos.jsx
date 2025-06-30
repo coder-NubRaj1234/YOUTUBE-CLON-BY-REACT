@@ -4,15 +4,19 @@ import Recommented from "../../Components/Recommented/Recommented";
 
 
 import { Context } from "../../Context/Context";
+import { useLocation } from "react-router-dom";
 
 const Videos = ({ deviseMobile }) => {
     const { commentShow, setCommentShow, showDiscription, setShowDiscription } =
       useContext(Context);
+
+      // const [location , setLocation] = useLocation();
+
   return (
     <>
       <div className="md:flex  flex w-[100vw] box-border hide-scrollbar h-[92vh]  flex-wrap justify-between  md:px-[6%] md:py-[1.5%]">
 
-        <VideoPlay deviseMobile={deviseMobile} />
+        <VideoPlay deviseMobile={deviseMobile} location={useLocation()} />
 
         {((!commentShow && !showDiscription) || !deviseMobile) && <Recommented />}
 

@@ -47,7 +47,7 @@ const VideoPlay = ({ deviseMobile }) => {
 
   return (
     <div
-      className={`video_play md:w-[65%] hide-scrollbar overflow-y-scroll     w-[100vw] flex flex-col  ${
+      className={`video_play relative md:w-[65%] hide-scrollbar overflow-y-scroll     w-[100vw] flex flex-col  ${
         deviseMobile && (commentShow || showDiscription)
           ? "h-[100%]"
           : ""
@@ -81,8 +81,7 @@ const VideoPlay = ({ deviseMobile }) => {
           onClick={() => {
             if (!showDiscription) {
               setShowDiscription(true);
-            }
-            console.log(showDiscription);
+            };
           }}
         >
           {deviseMobile && showDiscription && (

@@ -1,4 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+
+import chinal_Image from "../../assets/tom.png";
+import { Link } from "react-router-dom";
+import { Context } from "../../Context/Context";
 
 import thumbane1 from "../../assets/thumbnail1.png";
 import thumbane2 from "../../assets/thumbnail2.png";
@@ -9,12 +14,10 @@ import thumbane6 from "../../assets/thumbnail6.png";
 import thumbane7 from "../../assets/thumbnail7.png";
 import thumbane8 from "../../assets/thumbnail8.png";
 
-import chinal_Image from "../../assets/tom.png";
-import { Link } from "react-router-dom";
-import { Context } from "../../Context/Context";
-
 const Feed = () => {
   const { deviseMobile, videoOpen, setVideoOpen } = useContext(Context);
+  
+
 
   return (
     <div className=" sm:justify-center sm:items-center   flex lg:gap-4  flex-wrap gap-1 w-[100%] sm:gap-2  sm:pt-5 ">

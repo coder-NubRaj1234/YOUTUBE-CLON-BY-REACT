@@ -68,7 +68,6 @@ useEffect(() =>{
                   alt="castIcon"
                   onClick={() => {
                     setsideBarState((prive) => !prive);
-                    console.log(sideBarState, "sideBarState");
                   }}
                 />
               )}

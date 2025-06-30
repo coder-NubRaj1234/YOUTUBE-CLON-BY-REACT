@@ -7,10 +7,13 @@ const App = () => {
   const [deviseMobile, setdeviseMobile] = useState(true);
   const [sideBarState, setsideBarState] = useState(false);
   const [videoOpen , setVideoOpen] =  useState(false);
+  const [showNavBar, setShowNavBar] = useState(true);
 
 
     const [commentShow, setCommentShow] = useState(false);
     const [showDiscription, setShowDiscription] = useState(false);
+
+
 
 
 useEffect(() =>{
@@ -22,6 +25,12 @@ useEffect(() =>{
     window.innerWidth > 1025 ? setdeviseMobile(false) : setdeviseMobile(true);
     
   });
+
+  useEffect(() =>{
+    if(deviseMobile && videoOpen){
+      setShowNavBar(false);
+    };
+  } , [deviseMobile, videoOpen]);
 
   return (
     <>
@@ -37,9 +46,11 @@ useEffect(() =>{
           setShowDiscription,
           showDiscription,
           setCommentShow,
+          showNavBar,
+          setShowNavBar,
         }}
       >
-        <Navbar />
+        {showNavBar && <Navbar />}
         <Main deviseMobile={deviseMobile} />
       </Context.Provider>
     </>
