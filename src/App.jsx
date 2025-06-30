@@ -23,7 +23,7 @@ useEffect(() =>{
 
   window.addEventListener("resize", () => {
     window.innerWidth > 1025 ? setdeviseMobile(false) : setdeviseMobile(true);
-    
+    window.innerWidth > 1025 ? setShowNavBar(true) :"";
   });
 
   useEffect(() =>{

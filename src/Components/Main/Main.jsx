@@ -7,17 +7,15 @@ import { Context } from "../../Context/Context";
 
 
 const Main = ({ deviseMobile }) => {
-  const sideBarStyleMin = " bottom-0 w-full h-[8vh]  box-border px-4";
+  const sideBarStyleMin = "absolute bottom-0 w-full h-[8vh]  box-border px-4";
 
   const { videoOpen, setVideoOpen } = useContext(Context);
-  
-
 
 
   return (
-    <main className=" relative h[92vh]  ">
+    <main className="relative  h[92vh]  ">
       <div
-        className={`lg:pb-[0] lg:px-0 lg:flex     h-[100%]   w-[100vw] hide-scrollbar ${
+        className={` overflow-y-scroll lg:pb-[0] lg:px-0 lg:flex     h-[100%]   w-[100vw] hide-scrollbar ${
           !videoOpen ? "h-[92vh]" : ""
         } `}
       >

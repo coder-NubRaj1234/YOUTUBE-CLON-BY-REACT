@@ -18,6 +18,7 @@ const home = ({ deviseMobile }) => {
   useEffect(() => {
     if(location.pathname == "/" ){
       setShowNavBar(true);
+      setVideoOpen(false)
     }     
   }, [location]);
 
