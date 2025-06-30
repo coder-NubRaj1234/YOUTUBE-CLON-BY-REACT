@@ -1,10 +1,25 @@
-import React  , {useContext}from 'react'
-import Feed from '../../Components/Feed/Feed';
-import Sidebar from '../../Components/Navbar/Sidebar';
-import { Context } from '../../Context/Context';
+import React, { useContext  , useEffect} from "react";
+import Feed from "../../Components/Feed/Feed";
+import Sidebar from "../../Components/Navbar/Sidebar";
+import { Context } from "../../Context/Context";
 
+import { useLocation } from "react-router-dom";
 const home = ({ deviseMobile }) => {
-    const { videoOpen, setVideoOpen } = useContext(Context);
+  const {
+    videoOpen,
+    setVideoOpen,
+    showNavBar,
+    setShowNavBar,
+    setsideBarState,
+  } = useContext(Context);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if(location.pathname == "/" ){
+      setShowNavBar(true);
+    }     
+  }, [location]);
 
   return (
     <>
@@ -24,4 +39,4 @@ const home = ({ deviseMobile }) => {
   );
 };
 
-export default home
+export default home;
