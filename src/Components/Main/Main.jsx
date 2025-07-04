@@ -27,7 +27,7 @@ const Main = () => {
         <Routes>
           <Route path="/" element={<Home deviseMobile={deviseMobile} />} />
           <Route
-            path="/video"
+            path="/video/:categoryId/:videoId"
             element={<Videos deviseMobile={deviseMobile} />}
           />
         </Routes>

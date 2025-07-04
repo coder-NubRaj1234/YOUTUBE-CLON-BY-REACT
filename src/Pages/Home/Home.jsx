@@ -11,6 +11,8 @@ const home = ({ deviseMobile }) => {
     showNavBar,
     setShowNavBar,
     setsideBarState,
+    category,
+    setCategory
   } = useContext(Context);
 
   const location = useLocation();
@@ -21,6 +23,7 @@ const home = ({ deviseMobile }) => {
       setVideoOpen(false)
     }     
   }, [location]);
+
 
   return (
     <>
@@ -33,7 +36,7 @@ const home = ({ deviseMobile }) => {
            ${deviseMobile && !videoOpen ? "pb-[8vh]" : "pb-0"}
           `}
         >
-          <Feed deviseMobile={deviseMobile} />
+          <Feed deviseMobile={deviseMobile}  />
         </div>
       </div>
     </>

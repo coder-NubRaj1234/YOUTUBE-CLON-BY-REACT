@@ -16,7 +16,6 @@
     scrollbar-width: none;     /* Firefox */
   }
 
-
   .box-shasow-custom{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   }
@@ -29,3 +28,7 @@
   .video_info_icon{
     @apply flex items-center justify-center bg-[#f2f2f2] px-2 gap-2 rounded-full text-[1rem] py-1 md:text-[1.2rem]  md:px-3 md:font-semibold
   }
+  .active  {
+    @apply  text-red-600
+  }
+

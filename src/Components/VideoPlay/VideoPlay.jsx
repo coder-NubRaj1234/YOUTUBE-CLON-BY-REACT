@@ -19,7 +19,7 @@ import { Context } from "../../Context/Context";
 
 import Video from "../../assets/video.mp4";
 
-const VideoPlay = ({ deviseMobile }) => {
+const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
   const { commentShow, setCommentShow, showDiscription, setShowDiscription } =
     useContext(Context);
 
@@ -54,12 +54,20 @@ const VideoPlay = ({ deviseMobile }) => {
       
       ${!deviseMobile && "h-[100%] "}`}
     >
-      <video
+      {/* <video
         ref={videoRef}
         src={Video}
         controls
         className="md:rounded-2xl aspact-video w-full   "
-      ></video>
+      ></video> */}
+
+      <iframe
+        src={`https://www.youtube.com/embed/${videoId}`}
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
 
       <div
         className={`vidoe_info px-2 py-5  sm:flex sm:flex-col flex-1 overflow-y-hidden sm:overflow-y-visible relative`}

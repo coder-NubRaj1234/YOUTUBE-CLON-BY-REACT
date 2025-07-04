@@ -13,6 +13,9 @@ const App = () => {
   const [commentShow, setCommentShow] = useState(false);
   const [showDiscription, setShowDiscription] = useState(false);
 
+  
+  const [category, setCategory] = useState(0);
+
   useEffect(() => {
     window.innerWidth > 1025 ? setdeviseMobile(false) : setdeviseMobile(true);
   }, []);
@@ -28,10 +31,6 @@ const App = () => {
     }
   }, [deviseMobile, videoOpen]);
 
-  // useEffect(() =>{
-  // mdSearchBar ? setsideBarState(false) : setsideBarState(true);
-  // console.log("mdSearchBar" , mdSearchBar);
-  // } , [mdSearchBar])
 
   return (
     <>
@@ -51,6 +50,8 @@ const App = () => {
           setShowNavBar,
           mdSearchBar,
           setMdSearchBar,
+          category,
+          setCategory,
         }}
       >
         {showNavBar && <Navbar />}
