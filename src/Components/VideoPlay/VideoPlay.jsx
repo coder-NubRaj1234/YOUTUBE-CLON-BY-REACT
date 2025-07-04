@@ -51,7 +51,7 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
       className={`video_play md:flex  relative  md:w-[65%] hide-scrollbar overflow-y-scroll     w-[100vw] flex flex-col  ${
         deviseMobile && (commentShow || showDiscription)
           ? "h-[100%]"
-          : "min-h-[75%]"
+          : ""
       }
       
       ${!deviseMobile && "h-[100%] "}`}
@@ -69,7 +69,7 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
-        className="w-full h-[40%]"
+        className="w-full h-[35vh]"
       ></iframe>
 
       <div
