@@ -49,7 +49,9 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
   return (
     <div
       className={`video_play md:flex  relative  md:w-[65%] hide-scrollbar overflow-y-scroll     w-[100vw] flex flex-col  ${
-        deviseMobile && (commentShow || showDiscription) ? "h-[100%]" : ""
+        deviseMobile && (commentShow || showDiscription)
+          ? "h-[100%]"
+          : "min-h-[75%]"
       }
       
       ${!deviseMobile && "h-[100%] "}`}
@@ -62,11 +64,12 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
       ></video> */}
 
       <iframe
-        src={`https://www.youtube.com/embed/${videoId}`}
-        frameborder="0"
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        className="w-full h-[40%]"
       ></iframe>
 
       <div

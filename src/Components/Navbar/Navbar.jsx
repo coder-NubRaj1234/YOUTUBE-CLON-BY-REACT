@@ -14,6 +14,7 @@ import {
   faBell,
   
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import { Context } from "../../Context/Context";
@@ -72,7 +73,8 @@ useEffect(() =>{
                   }}
                 />
               )}
-              <img src={youtubeImg} alt="youtube-icon" className="w-[7.5rem]" />
+              <Link to ="/"> <img src={youtubeImg} alt="youtube-icon" className="w-[7.5rem]" /></Link>
+
             </div>
           </div>
 
