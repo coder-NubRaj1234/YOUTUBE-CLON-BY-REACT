@@ -464,23 +464,25 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                 </div>
                 {!commentShow && (
                   <div className="comment flex gap-3 pt-3">
-                    <div>
-                      <img
-                        src={
+                    <div
+                      className={`min-w-8 h-8  rounded-full  bg-cover `}
+                      style={{
+                        backgroundImage: `url(${
                           oneComment &&
-                          oneComment.snippet.topLevelComment.snippet
+                          (oneComment.snippet.topLevelComment.snippet
                             .authorProfileImageUrl
-                        }
-                        alt="profile"
-                        className="rounded-full w-8 cursor-pointer sm:w-8"
-                      />
-                    </div>
+                            ? oneComment.snippet.topLevelComment.snippet
+                                .authorProfileImageUrl
+                            : comProfileImg)
+                        })`,
+                      }}
+                    ></div>
                     <div className="comment-info flex flex-col gap-1.5 ">
-                 
                       <p className="text-[1rem] font-Roboto line-clamp-1">
-                        { oneComment && oneComment.snippet.topLevelComment.snippet.textDisplay}
+                        {oneComment &&
+                          oneComment.snippet.topLevelComment.snippet
+                            .textDisplay}
                       </p>
-                    
                     </div>
                   </div>
                 )}
@@ -503,7 +505,13 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                         <div
                           className={`min-w-8 h-8  rounded-full  bg-cover `}
                           style={{
-                            backgroundImage: `url(${item.snippet.topLevelComment.snippet.authorProfileImageUrl ? item.snippet.topLevelComment.snippet.authorProfileImageUrl : comProfileImg})`,
+                            backgroundImage: `url(${
+                              item.snippet.topLevelComment.snippet
+                                .authorProfileImageUrl
+                                ? item.snippet.topLevelComment.snippet
+                                    .authorProfileImageUrl
+                                : comProfileImg
+                            })`,
                           }}
                         >
                           {/* <img
