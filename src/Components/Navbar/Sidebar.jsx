@@ -42,7 +42,7 @@ const Sidebar = ({ style }) => {
   const [width, setWidth] = useState("w-[5vw] h-[100%]");
 
   useEffect(() => {
-    let sideBarWidth = sideBarState ? "w-[13vw] h-[100%]" : "w-[5vw] h-[100%] ";
+    let sideBarWidth = sideBarState ? "  min-w-[10rem] h-[100%] " : "min-w-[5vw] h-[100%] ";
     setWidth(sideBarWidth);
   }, [sideBarState]);
 
@@ -93,8 +93,8 @@ const Sidebar = ({ style }) => {
               category === "" ? "active" : ""
             }  ${
               sideBarState
-                ? "flex-row text-[0.9rem] lg:w-[90%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5"
-                : "lg:py-5 "
+                ? "flex-row text-[0.9rem] lg:w-[90%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5  lg:pr-9"
+                : "lg:py-5"
             }`}
           >
             <img src={subscribe} alt="subscibe-icon" className="w-6.5 lg:w-5" />

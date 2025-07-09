@@ -25,6 +25,7 @@ const Feed = () => {
   console.log(API_KEY);
 
   const [data, setData] = useState([]);
+  
   const fearchData = async () => {
     try {
       const response = await fetch(
@@ -32,7 +33,7 @@ const Feed = () => {
       );
       const videoData = await response.json();
       setData(videoData.items);
-      console.log("data:", videoData.items);
+      console.log("data:", response);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -45,7 +46,7 @@ const Feed = () => {
   let videos_day = "";
 
   return (
-    <div className=" sm:justify-center sm:items-center   flex lg:gap-4  flex-wrap gap-1 w-[100%] sm:gap-2  sm:pt-5 ">
+    <div className="lg:gap-x-4 sm:gap-2 sm:justify-center  flex   flex-wrap gap-1 w-[100%] sm:gap-2  sm:pt-5 ">
       {data &&
         data.map((items, index) => {
           
@@ -59,7 +60,7 @@ const Feed = () => {
             <Link
               key={index}
               to={`video/${items.snippet.categoryId}/${items.id}`}
-              className="lg:w-[30%] lg:h-auto sm:w-[47%] cursor-pointer   w-[100vw] min-h-[17rem]  "
+              className="xl:w-[23%] lg:w-[30%] md:w-[32%] sm:w-[48%] sm  cursor-pointer   w-[100vw] min-h-[17rem]  "
               onClick={() => {
                 setVideoOpen(true);
               }}
@@ -67,7 +68,7 @@ const Feed = () => {
               <img
                 src={`${items.snippet.thumbnails.medium.url}`}
                 alt={thumbane1}
-                className=" lg:h-auto w-[100vw] h-[75%]   sm:rounded-xl"
+                className=" lg:h-auto w-[100vw]    sm:rounded-xl"
               />
               <div className="flex  gap-5 px-2 py-2 ">
                 <img
@@ -76,7 +77,7 @@ const Feed = () => {
                   className="w-8 h-8 rounded-full"
                 />
                 <div className="py- box-border lg:flex lg:flex-col gap-0.5">
-                  <h2 className="lg:text-[1rem] lg:font-medium font-Roboto text-sm ">
+                  <h2 className="lg:text-[0.8rem] lg:font-medium font-Roboto text-sm ">
                     {items.snippet.title}
                   </h2>
                   <p className="lg:text-[0.9rem]  lg:font-semibold  font-medium  text-[0.8rem] text-[#555] lg:flex flex-col">
