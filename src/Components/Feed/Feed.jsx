@@ -33,7 +33,7 @@ const Feed = () => {
       );
       const videoData = await response.json();
       setData(videoData.items);
-      console.log("data:", response);
+      // console.log("data:", response);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

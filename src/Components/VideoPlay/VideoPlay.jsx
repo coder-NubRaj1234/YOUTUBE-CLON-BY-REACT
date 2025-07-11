@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import Recommented from "../Recommented/Recommented";
+import Linkify from "linkify-react";
+
+
 
 import {
   faThumbsUp,
@@ -22,7 +25,10 @@ import { Context } from "../../Context/Context";
 import Video from "../../assets/video.mp4";
 import ApiKey from "../../data";
 import { data } from "react-router-dom";
-import { value_convorter } from "../../data";
+import {
+  value_convorter,
+  localDateConvorter,
+} from "../../data";
 import moment from "moment";
 
 import { dateConvorter } from "../../data";
@@ -41,9 +47,34 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
 
   const [oneComment, setOneComment] = useState(null);
 
+  //diactiprion manage to show...
+   const discriptionManage = (string) => {
+    const line = string.split("\n");
+    const discription = line.map((link, index) => {
+    return (
+      <p key={index} className="mb-2 whitespace-pre-wrap">
+        <Linkify
+          options={{
+            target: "_blank",
+            rel: "noopener noreferrer",
+            attributes: {
+              class: "text-blue-500", // <-- your Tailwind or custom class here
+            },
+          }}
+        >
+          {link}
+        </Linkify>
+      </p>
+    );
+    });
+
+    // console.log(discription);
+    return discription;
+  };
+
   useEffect(() => {
     setOneComment(commentsData ? commentsData[0] : "");
-    console.log(commentsData ? commentsData[0] : "comments");
+    // console.log(commentsData ? commentsData[0] : "comments");
   }, [commentsData]);
 
   useEffect(() => {
@@ -70,7 +101,7 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
     const response = await fetch(Api_URL);
     const data = await response.json();
     setVideoData(data.items[0]);
-    // console.log(data.items[0]);
+    console.log(data.items[0]);
   };
 
   useEffect(() => {
@@ -91,7 +122,7 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
       const comResponsive = await fetch(comment_URL);
       const comItems = await comResponsive.json();
       setCommentsData(comItems.items);
-      console.log(comItems.items);
+      // console.log(comItems.items);
     }
   };
   useEffect(() => {
@@ -155,7 +186,7 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                       className="text-[1.5rem] pr-2"
                       onClick={() => {
                         setShowDiscription(false);
-                        console.log(showDiscription);
+                        // console.log(showDiscription);
                       }}
                     />
                   </div>
@@ -181,9 +212,16 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                       <p className="flex flex-col">
                         <span className="font-bold font-Roboto ">
                           {" "}
-                          {videoData && videoData.snippet.publishedAt}
+                          {videoData &&
+                            localDateConvorter(videoData.snippet.publishedAt)
+                              .year}
                         </span>
-                        <span className="text-[0.8rem] italic">12 Feb</span>
+                        <span className="text-[0.8rem] italic">
+                          {
+                            localDateConvorter(videoData.snippet.publishedAt)
+                              .monthDate
+                          }
+                        </span>
                       </p>
                     </div>
 
@@ -248,15 +286,15 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
 
               {showDiscription && (
                 <div className=" md:text-[0.9rem] extrate-info bg-[#f2f2f2] rounded-2xl p-2 text-[0.7rem] font-inter">
-                  {deviseMobile && (
+                  {/* {deviseMobile && (
                     <p>
                       Learn How to crate YouTube clone using React JS and
                       YouTube Data API. Build website like YouTube with React
                       JS. React JS project for beginners.
                     </p>
-                  )}
+                  )} */}
 
-                  <div className="py-5 ">
+                  {/* <div className="py-5 ">
                     <div className="flex flex-col gap-1">
                       <p>
                         <span>👉 Live Preview:</span>
@@ -282,6 +320,10 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                         </a>
                       </p>
                     </div>
+                  </div> */}
+
+                  <div className="whitespace-pre-line">
+                    { videoData && discriptionManage(videoData.snippet.description)}
                   </div>
                 </div>
               )}
@@ -359,7 +401,7 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
 
             {/* like shaire */}
             <div className="vidos_actions sm:order-2 md:flex md:justify-between">
-              <div className="left flex justify-between items-center md:gap-5">
+              <div className="left flex justify-between items-center md:gap-5 gap-2">
                 <div className="flex items-center gap-2 cursor-pointer">
                   <div>
                     <img
@@ -370,8 +412,8 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                       className="w-10 rounded-full "
                     />
                   </div>
-                  <div className="flex gap-2 text-[0.9rem] font-Roboto font-semibold  md:flex-col md:gap-0">
-                    <p className=" md:text-[1.1rem] ">
+                  <div className="flex items-center  gap-2 text-[0.9rem] sm:font-semibold  font-Roboto sm:font-semibold  md:flex-col md:gap-0">
+                    <p className=" md:text-[1.1rem]  inline-flex ">
                       {" "}
                       {videoData && videoData.snippet.channelTitle}
                     </p>
@@ -513,9 +555,7 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                                 : comProfileImg
                             })`,
                           }}
-                        >
-                       
-                        </div>
+                        ></div>
                         <div className="comment-info flex flex-col gap-1.5 ">
                           {commentShow && (
                             <div className="flex gap-4 text-[#5a5a5a] text-sm">
