@@ -514,21 +514,7 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                             })`,
                           }}
                         >
-                          {/* <img
-                            src={
-                              item.snippet.topLevelComment.snippet
-                                .authorProfileImageUrl
-                                ? item.snippet.topLevelComment.snippet
-                                    .authorProfileImageUrl
-                                : ""
-                          }
-                            onError={(e) => {
-                              e.target.onerror = null;
-                              e.target.src = `${comProfileImg} `
-                            }}
-                            alt="profile"
-                            className="rounded-full w-8  cursor-pointer sm:w-8"
-                          /> */}
+                       
                         </div>
                         <div className="comment-info flex flex-col gap-1.5 ">
                           {commentShow && (
