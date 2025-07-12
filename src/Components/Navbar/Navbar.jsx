@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
   faBell,
-  
+  faArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -21,8 +21,15 @@ import { Context } from "../../Context/Context";
 
 const Navbar = () => {
 
-  const { deviseMobile, sideBarState, setsideBarState, mdSearchBar , setMdSearchBar } =
-    useContext(Context);
+  const {
+    deviseMobile,
+    sideBarState,
+    setsideBarState,
+    mdSearchBar,
+    setMdSearchBar,
+    videoOpen,
+    setVideoOpen,
+  } = useContext(Context);
  
   const inputRef = useRef();
 
@@ -63,7 +70,7 @@ useEffect(() =>{
         <>
           <div className="left">
             <div className=" flex items-center gap-5">
-              {!deviseMobile && (
+              {!deviseMobile && !videoOpen && (
                 <img
                   className="w-[1.5rem] cursor-pointer hover:bg-gray-200  h-[1.5rem]  rounded-xl p-2 box-content"
                   src={menu}
@@ -73,8 +80,23 @@ useEffect(() =>{
                   }}
                 />
               )}
-              <Link to ="/"> <img src={youtubeImg} alt="youtube-icon" className="w-[7.5rem]" /></Link>
+              {!deviseMobile && videoOpen && (
+                <Link to="/">
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    className="w-[1.5rem] text-[1.5rem] cursor-pointer hover:bg-gray-200  h-[1.5rem]  rounded-full p-2 box-content"
+                  ></FontAwesomeIcon>
+                </Link>
+              )}
 
+              <Link to="/">
+                {" "}
+                <img
+                  src={youtubeImg}
+                  alt="youtube-icon"
+                  className="w-[7.5rem]"
+                />
+              </Link>
             </div>
           </div>
 

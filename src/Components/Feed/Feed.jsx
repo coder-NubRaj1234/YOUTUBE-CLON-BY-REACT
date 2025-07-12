@@ -20,16 +20,13 @@ import { value_convorter } from "../../data";
 import moment from "moment";
 
 const Feed = () => {
-  const { deviseMobile, videoOpen, setVideoOpen, category } =
+  const { deviseMobile, videoOpen, setVideoOpen, category, setLocationHome } =
     useContext(Context);
 
   const [data, setData] = useState([]);
   const [chinalImg, setChinalImg] = useState([]);
 
 
-  useEffect(() => {
-    console.log(chinalImg)
-  }, []);
   const fearchData = async () => {
     try {
       const response = await fetch(
@@ -37,7 +34,6 @@ const Feed = () => {
       );
       const videoData = await response.json();
       setData(videoData.items);
-      console.log("data:", response);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

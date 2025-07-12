@@ -1,11 +1,9 @@
-import React , {useEffect, useState  , useContext , useRef} from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import Sidebar from "../Navbar/Sidebar";
-import { Route , Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "../../Pages/Home/Home";
 import Videos from "../../Pages/Videos/Videos";
 import { Context } from "../../Context/Context";
-
-
 
 const Main = () => {
   const sideBarStyleMin = "absolute bottom-0 w-full h-[8vh]  box-border px-4";
@@ -17,19 +15,8 @@ const Main = () => {
     mdSearchBar,
     scrollZero,
     setScrollZero,
+    scrollContainer,
   } = useContext(Context);
-
-    const scrollContainer = useRef();
-
-    useEffect(() => {
-      if(scrollZero){
-        // scrollContainer.current.scrollTop = 0;
-      console.log("scroll");
-      }else{
-        console.log("not scroll")
-      }
-    }, [scrollZero]);
-
 
   return (
     <main

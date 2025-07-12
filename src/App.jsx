@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef} from "react";
 import Navbar from "./Components/Navbar/Navbar";
 import Main from "./Components/Main/Main";
 import { Context } from "./Context/Context";
@@ -13,11 +13,14 @@ const App = () => {
   const [commentShow, setCommentShow] = useState(false);
   const [showDiscription, setShowDiscription] = useState(false);
 
+
   const [scrollZero , setScrollZero] = useState(false);
+    const scrollContainer = useRef();
 
 
   
   const [category, setCategory] = useState(0);
+    const pcVideoContainer = useRef(null);
 
   useEffect(() => {
     window.innerWidth > 1025 ? setdeviseMobile(false) : setdeviseMobile(true);
@@ -33,6 +36,16 @@ const App = () => {
       setShowNavBar(false);
     }
   }, [deviseMobile, videoOpen]);
+
+  
+
+    const scrollTopFun = () => {
+      if (scrollZero && (scrollContainer.current && pcVideoContainer.current)) {
+     
+        scrollContainer.current.scrollTop = 0;
+        pcVideoContainer.current.scrollTop = 0;
+      } 
+    };
 
 
   return (
@@ -57,6 +70,11 @@ const App = () => {
           setCategory,
           scrollZero,
           setScrollZero,
+
+          scrollTopFun,
+          scrollContainer,
+          pcVideoContainer,
+
         }}
       >
         {showNavBar && <Navbar />}

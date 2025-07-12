@@ -31,16 +31,24 @@ import { width } from "@fortawesome/free-brands-svg-icons/fa42Group";
 import { useLocation } from "react-router-dom";
 
 const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
-  const { commentShow, setCommentShow, showDiscription, setShowDiscription , scrollZero,
-      setScrollZero,} =
-    useContext(Context);
+  const {
+    commentShow,
+    setCommentShow,
+    showDiscription,
+    setShowDiscription,
+    scrollZero,
+    setScrollZero,
+    scrollTopFun,
+    pcVideoContainer,
+  } = useContext(Context);
 
   const [commentHeight, setSetCommentHeight] = useState("h-[6rem]");
   const [showStyle, setShowStyle] = useState("");
   const [videoData, setVideoData] = useState(null);
   const [chinalData, setChinalData] = useState(null);
   const [commentsData, setCommentsData] = useState(null);
-  const videoRef = useRef("");
+
+
 
   // current scroll 0;
 
@@ -48,10 +56,9 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
   useEffect(() => {
     if ((location.pathname == `/video/${categoryId}/${videoId}` )) {
       setScrollZero(true);
-      console.log("video")
+      scrollTopFun();
     }else{
       setScrollZero(false);
-      console.log("not_video")
     }
   }, [location]);
 
@@ -153,6 +160,7 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
     <>
       {videoData && (
         <div
+          ref={pcVideoContainer}
           className={`video_play md:flex  relative  md:w-[65%] hide-scrollbar overflow-y-scroll     w-[100vw] flex flex-col  ${
             deviseMobile && (commentShow || showDiscription) ? "h-[100%]" : ""
           }
