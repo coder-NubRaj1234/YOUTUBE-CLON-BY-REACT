@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import Recommented from "../Recommented/Recommented";
 import Linkify from "linkify-react";
 
-
-
 import {
   faThumbsUp,
   faThumbsDown,
@@ -18,24 +16,23 @@ import {
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profile_img from "../../assets/jack.png";
-import comProfileImg from "../../img/useProfile.png"
+import comProfileImg from "../../img/useProfile.png";
 
 import { Context } from "../../Context/Context";
 
 import Video from "../../assets/video.mp4";
 import ApiKey from "../../data";
 import { data } from "react-router-dom";
-import {
-  value_convorter,
-  localDateConvorter,
-} from "../../data";
+import { value_convorter, localDateConvorter } from "../../data";
 import moment from "moment";
 
 import { dateConvorter } from "../../data";
 import { width } from "@fortawesome/free-brands-svg-icons/fa42Group";
+import { useLocation } from "react-router-dom";
 
 const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
-  const { commentShow, setCommentShow, showDiscription, setShowDiscription } =
+  const { commentShow, setCommentShow, showDiscription, setShowDiscription , scrollZero,
+      setScrollZero,} =
     useContext(Context);
 
   const [commentHeight, setSetCommentHeight] = useState("h-[6rem]");
@@ -45,32 +42,55 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
   const [commentsData, setCommentsData] = useState(null);
   const videoRef = useRef("");
 
+  // current scroll 0;
+
+  const location = useLocation();
+  useEffect(() => {
+    if ((location.pathname == `/video/${categoryId}/${videoId}` )) {
+      setScrollZero(true);
+      console.log("video")
+    }else{
+      setScrollZero(false);
+      console.log("not_video")
+    }
+  }, [location]);
+
   const [oneComment, setOneComment] = useState(null);
+  const [showLessDiscIN_info, setShowLessDiscIN_info] = useState(
+    "overflow-clip h-[6rem]"
+  );
+
+  // discription state..
+  useEffect(() => {
+    if (!deviseMobile) {
+      setShowLessDiscIN_info("");
+    }
+  }, [deviseMobile]);
 
   //diactiprion manage to show...
-   const discriptionManage = (string) => {
+  function discriptionManage(string) {
     const line = string.split("\n");
     const discription = line.map((link, index) => {
-    return (
-      <p key={index} className="mb-2 whitespace-pre-wrap">
-        <Linkify
-          options={{
-            target: "_blank",
-            rel: "noopener noreferrer",
-            attributes: {
-              class: "text-blue-500", // <-- your Tailwind or custom class here
-            },
-          }}
-        >
-          {link}
-        </Linkify>
-      </p>
-    );
+      return (
+        <p key={index} className="mb-2 whitespace-pre-wrap">
+          <Linkify
+            options={{
+              target: "_blank",
+              rel: "noopener noreferrer",
+              attributes: {
+                class: "text-blue-500", // <-- your Tailwind or custom class here
+              },
+            }}
+          >
+            {link}
+          </Linkify>
+        </p>
+      );
     });
 
     // console.log(discription);
     return discription;
-  };
+  }
 
   useEffect(() => {
     setOneComment(commentsData ? commentsData[0] : "");
@@ -101,12 +121,12 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
     const response = await fetch(Api_URL);
     const data = await response.json();
     setVideoData(data.items[0]);
-    console.log(data.items[0]);
+    // console.log(data.items[0]);
   };
 
   useEffect(() => {
     YTData();
-  }, []);
+  }, [videoId]);
 
   // featching chinal data......
   const fatchChinaldata = async () => {
@@ -175,9 +195,10 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                 }
               }}
             >
-              {deviseMobile && showDiscription && (
-                <div>
-                  <div className="flex justify-between items-center pb-4 sticky top-0 left-0 z-10 bg-white border-b-2 border-b-gray-400  py-5">
+              {/* add */}
+              <div className="relative top-0 h-full">
+                {deviseMobile && showDiscription && (
+                  <div className="flex justify-between items-center pb-4  sticky top-0 left-0 z-10 bg-white border-b-2 border-b-gray-400  py-5">
                     <h2 className="font-semibold text-[1.1rem] font-Roboto">
                       Discription
                     </h2>
@@ -190,213 +211,173 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                       }}
                     />
                   </div>
-                  <h1 className="py-4 font-Roboto font-semibold text-[0.9rem]">
-                    {videoData && videoData.snippet.title}
-                  </h1>
-
-                  <div className="about-vidoe ">
-                    <div className="flex justify-around text-center">
-                      <p className="flex flex-col">
-                        <span className="font-bold font-Roboto ">
-                          {videoData.statistics.likeCount}
-                        </span>
-                        <span className="text-[0.8rem] italic">Likes</span>
-                      </p>
-                      <p className="flex flex-col">
-                        <span className="font-bold font-Roboto ">
-                          {" "}
-                          {videoData.statistics.viewCount}
-                        </span>
-                        <span className="text-[0.8rem] italic">Views</span>
-                      </p>
-                      <p className="flex flex-col">
-                        <span className="font-bold font-Roboto ">
-                          {" "}
-                          {videoData &&
-                            localDateConvorter(videoData.snippet.publishedAt)
-                              .year}
-                        </span>
-                        <span className="text-[0.8rem] italic">
-                          {
-                            localDateConvorter(videoData.snippet.publishedAt)
-                              .monthDate
-                          }
-                        </span>
-                      </p>
-                    </div>
-
-                    <div className="flex py-4 gap-2 flex-wrap">
-                      <p className="text-[0.8rem] bg-[#f2f2f2] px-3 rounded-3xl py-1 cursor-pointer">
-                        #GreateStacl
-                      </p>
-                      <p className="text-[0.8rem] bg-[#f2f2f2] px-3 rounded-3xl py-1 cursor-pointer">
-                        #react js
-                      </p>
-                      <p className="text-[0.8rem] bg-[#f2f2f2] px-3 rounded-3xl py-1 cursor-pointer">
-                        #wevdevelopment
-                      </p>
-                      <p className="text-[0.8rem] bg-[#f2f2f2] px-3 rounded-3xl py-1 cursor-pointer">
-                        #wevdevelopment
-                      </p>
-                      <p className="text-[0.8rem] bg-[#f2f2f2] px-3 rounded-3xl py-1 cursor-pointer">
-                        #wevdevelopment
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-              {(!showDiscription || !deviseMobile) && (
-                <div className="md:text-[1rem] md:gap-1 md:font-medium md:flex-col py-2 text-[0.8rem] text-[#5a5a5a]  md:text-[1rem] md:font-semibold md:text-black flex  gap-2">
-                  <div className="views-tiem flex md:flex-row italic items-center ">
-                    <span className="font-semibold flex gap-1 ">
-                      {value_convorter(videoData.statistics.viewCount)}
-                      <span className="font-medium md:font-semibold">
-                        views
-                      </span>
-                    </span>
-
-                    <span className="pl-2">
-                      {" "}
-                      {dateConvorter(videoData.snippet.publishedAt)}
-                    </span>
-
-                    {!deviseMobile && (
-                      <p className="flex gap-2 items-center mx-5  justify-center">
-                        <span className=" text-[#626262]">#GreateStacl</span>
-                        <span className=" text-[#626262]">#react js</span>
-                        <span className=" text-[#626262]">#wevdevelopment</span>
-                      </p>
-                    )}
-                  </div>
-
-                  {!deviseMobile && (
-                    <p className="font-normal font-Roboto ">
-                      Learn How to crate YouTube clone using React JS and
-                      YouTube Data API. Build website like YouTube with React
-                      JS. React JS project for beginners.
-                    </p>
-                  )}
-                  {!showDiscription && (
-                    <span className="text-black font-semibold pl-2 cursor-pointer">
-                      ...more
-                    </span>
-                  )}
-                </div>
-              )}
-
-              {showDiscription && (
-                <div className=" md:text-[0.9rem] extrate-info bg-[#f2f2f2] rounded-2xl p-2 text-[0.7rem] font-inter">
-                  {/* {deviseMobile && (
-                    <p>
-                      Learn How to crate YouTube clone using React JS and
-                      YouTube Data API. Build website like YouTube with React
-                      JS. React JS project for beginners.
-                    </p>
-                  )} */}
-
-                  {/* <div className="py-5 ">
-                    <div className="flex flex-col gap-1">
-                      <p>
-                        <span>👉 Live Preview:</span>
-                        <a href="#" className="text-blue-600">
-                          https://vidtube-sable.vercel.app/
-                        </a>
-                      </p>
-                      <p>
-                        <span>👉 Source code:</span>
-                        <a href="#" className="text-blue-600">
-                          {" "}
-                          https://greatstack.dev/go/youtube
-                        </a>
-                      </p>
-                    </div>
-
-                    <div>
-                      <p>
-                        <span>❤️ Get project completion certificate:</span>
-                        <a href="#" className="text-blue-500">
-                          {" "}
-                          https://quiz.greatstack.dev/ytcl
-                        </a>
-                      </p>
-                    </div>
-                  </div> */}
-
-                  <div className="whitespace-pre-line">
-                    { videoData && discriptionManage(videoData.snippet.description)}
-                  </div>
-                </div>
-              )}
-
-              {showDiscription && (
-                <div className="bootom py-4">
+                )}
+                {deviseMobile && showDiscription && (
                   <div>
-                    <div className="left flex justify-between items-center md:gap-5 pb-5">
-                      <div className="flex items-center gap-2 cursor-pointer">
-                        <div>
-                          <img
-                            src={profile_img}
-                            alt="profile_img"
-                            className="w-8 rounded-full md:w-10 "
-                          />
-                        </div>
-                        <div className="flex  text-[0.7rem] font-Roboto font-Roboto   flex-col">
-                          <p className=" text-[0.9rem] md:text-[1.1rem] md:font-semibold">
-                            Greate Stack
-                          </p>
-                          <p className="md:text-[0.8rem] after:content-['subscribers'] font-normal text-[#5e5e5e] after:pl-1">
-                            125K
-                          </p>
-                        </div>
-                      </div>
-                      <div>
-                        {deviseMobile && (
-                          <button
-                            className="bg-black px-5 py-1.5 rounded-full text-white font-semibold font-Roboto cursor-pointer text-[0.8rem]
-            "
-                          >
-                            Subscribe
-                          </button>
-                        )}
+                    <h1 className="py-4 font-Roboto font-semibold text-[0.9rem]">
+                      {videoData && videoData.snippet.title}
+                    </h1>
+
+                    <div className="about-vidoe mb-5">
+                      <div className="flex justify-around text-center">
+                        <p className="flex flex-col">
+                          <span className="font-bold font-Roboto ">
+                            {videoData.statistics.likeCount}
+                          </span>
+                          <span className="text-[0.8rem] italic">Likes</span>
+                        </p>
+                        <p className="flex flex-col">
+                          <span className="font-bold font-Roboto ">
+                            {" "}
+                            {videoData.statistics.viewCount}
+                          </span>
+                          <span className="text-[0.8rem] italic">Views</span>
+                        </p>
+                        <p className="flex flex-col">
+                          <span className="font-bold font-Roboto ">
+                            {" "}
+                            {videoData &&
+                              localDateConvorter(videoData.snippet.publishedAt)
+                                .year}
+                          </span>
+                          <span className="text-[0.8rem] italic">
+                            {
+                              localDateConvorter(videoData.snippet.publishedAt)
+                                .monthDate
+                            }
+                          </span>
+                        </p>
                       </div>
                     </div>
+                  </div>
+                )}
+                {(!showDiscription || !deviseMobile) && (
+                  <div className="md:text-[1rem] md:gap-1 md:font-medium md:flex-col py-2 text-[0.8rem] text-[#5a5a5a]  md:text-[1rem] md:font-semibold md:text-black flex  gap-2">
+                    <div className="views-tiem flex md:flex-row italic items-center ">
+                      <span className="font-semibold flex gap-1 ">
+                        {value_convorter(videoData.statistics.viewCount)}
+                        <span className="font-medium md:font-semibold">
+                          views
+                        </span>
+                      </span>
 
-                    <div className="flex gap-4 flex-wrap">
-                      <p className="md:hover:bg-gray-300 flex gap-2 px-3 text-[0.8rem] border-1 border-gray-300 rounded-full py-2 items-center  cursor-pointer hover:bg-[#f2f2f2]">
-                        <FontAwesomeIcon
-                          className="text-[1rem]"
-                          icon={faCirclePlay}
-                        />
-                        <span>Videos</span>
-                      </p>
-                      <p className="md:hover:bg-gray-300 flex gap-2 px-3 text-[0.8rem] border-1 border-gray-300 rounded-full py-2 items-center cursor-pointer hover:bg-[#f2f2f2]">
-                        <FontAwesomeIcon
-                          className="text-[1rem]"
-                          icon={faUser}
-                        />
-                        <span>About</span>
-                      </p>
+                      <span className="pl-2">
+                        {" "}
+                        {dateConvorter(videoData.snippet.publishedAt)}
+                      </span>
                     </div>
 
                     {!deviseMobile && (
-                      <p className="font-Roboto text-[0.9rem] font-semibold mt-10 ">
-                        <span
-                          className="cursor-pointer "
-                          onClick={() => {
-                            if (showDiscription) {
-                              setShowDiscription(false);
-                            }
-                            console.log(showDiscription);
-                          }}
-                        >
-                          {" "}
-                          See Less
-                        </span>
+                      <p className="font-normal font-Roboto ">
+                        Learn How to crate YouTube clone using React JS and
+                        YouTube Data API. Build website like YouTube with React
+                        JS. React JS project for beginners.
                       </p>
                     )}
+                    {!showDiscription && (
+                      <span className="text-black font-semibold pl-2 cursor-pointer">
+                        ...more
+                      </span>
+                    )}
                   </div>
-                </div>
-              )}
+                )}
+
+                {showDiscription && (
+                  <div
+                    onClick={() => {
+                      setShowLessDiscIN_info("overflow-auto h-auto");
+                    }}
+                    className="md:text-[0.9rem] extrate-info bg-[#f2f2f2] rounded-2xl p-2 text-[0.7rem] font-inter"
+                  >
+                    <div
+                      className={`relative whitespace-pre-line  ${showLessDiscIN_info}`}
+                    >
+                      {videoData &&
+                        discriptionManage(videoData.snippet.description)}
+                      {deviseMobile &&
+                        showLessDiscIN_info !== "overflow-auto h-auto" && (
+                          <p className="absolute bottom-0 right-0">...More</p>
+                        )}
+                    </div>
+                  </div>
+                )}
+
+                {showDiscription && (
+                  <div className=" px-2 w-full  bootom py-4">
+                    <div>
+                      <div className="left flex justify-between items-center md:gap-5 pb-5">
+                        <div className="flex items-center gap-2 cursor-pointer">
+                          <div>
+                            <img
+                              src={
+                                chinalData &&
+                                chinalData.snippet.thumbnails.medium.url
+                              }
+                              alt="profile_img"
+                              className="w-8 rounded-full md:w-10 "
+                            />
+                          </div>
+                          <div className="flex  text-[0.7rem] font-Roboto font-Roboto   flex-col">
+                            <p className=" text-[0.9rem] md:text-[1.1rem] md:font-semibold">
+                              {videoData && videoData.snippet.channelTitle}
+                            </p>
+                            <p className="md:text-[0.8rem] after:content-['subscribers'] font-normal text-[#5e5e5e] after:pl-1">
+                              {chinalData &&
+                                value_convorter(
+                                  chinalData.statistics.subscriberCount
+                                )}
+                            </p>
+                          </div>
+                        </div>
+                        <div>
+                          {deviseMobile && (
+                            <button
+                              className="bg-black px-5 py-1.5 rounded-full text-white font-semibold font-Roboto cursor-pointer text-[0.8rem]
+            "
+                            >
+                              Subscribe
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex gap-4 flex-wrap">
+                        <p className="md:hover:bg-gray-300 flex gap-2 px-3 text-[0.8rem] border-1 border-gray-300 rounded-full py-2 items-center  cursor-pointer hover:bg-[#f2f2f2]">
+                          <FontAwesomeIcon
+                            className="text-[1rem]"
+                            icon={faCirclePlay}
+                          />
+                          <span>Videos</span>
+                        </p>
+                        <p className="md:hover:bg-gray-300 flex gap-2 px-3 text-[0.8rem] border-1 border-gray-300 rounded-full py-2 items-center cursor-pointer hover:bg-[#f2f2f2]">
+                          <FontAwesomeIcon
+                            className="text-[1rem]"
+                            icon={faUser}
+                          />
+                          <span>About</span>
+                        </p>
+                      </div>
+
+                      {!deviseMobile && (
+                        <p className="font-Roboto text-[0.9rem] font-semibold mt-10 ">
+                          <span
+                            className="cursor-pointer "
+                            onClick={() => {
+                              if (showDiscription) {
+                                setShowDiscription(false);
+                              }
+                              console.log(showDiscription);
+                            }}
+                          >
+                            {" "}
+                            See Less
+                          </span>
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* like shaire */}
@@ -412,7 +393,7 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                       className="w-10 rounded-full "
                     />
                   </div>
-                  <div className="flex items-center  gap-2 text-[0.9rem] sm:font-semibold  font-Roboto sm:font-semibold  md:flex-col md:gap-0">
+                  <div className="flex   gap-2 text-[0.9rem] sm:font-semibold  font-Roboto sm:font-semibold  md:flex-col md:gap-0">
                     <p className=" md:text-[1.1rem]  inline-flex ">
                       {" "}
                       {videoData && videoData.snippet.channelTitle}

@@ -1,8 +1,10 @@
 
 import moment from "moment/moment";
 
+const ApiKey = "AIzaSyCfBEWDiGb__rd71qD7C7_T4EHZ1OJNYfU";
+// const ApiKey = "AIzaSyCkrny7Tj80UHzTLnD1tpNklgVTUFgIb7Q";
 
-const ApiKey = "AIzaSyCkrny7Tj80UHzTLnD1tpNklgVTUFgIb7Q";
+
 export const value_convorter = (value) => {
   if (value >= 1000000) {
     return Math.floor(value / 1000000) + "M";

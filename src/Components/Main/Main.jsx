@@ -1,4 +1,4 @@
-import React , {useEffect, useState  , useContext} from "react";
+import React , {useEffect, useState  , useContext , useRef} from "react";
 import Sidebar from "../Navbar/Sidebar";
 import { Route , Routes } from "react-router-dom";
 import Home from "../../Pages/Home/Home";
@@ -6,11 +6,29 @@ import Videos from "../../Pages/Videos/Videos";
 import { Context } from "../../Context/Context";
 
 
+
 const Main = () => {
   const sideBarStyleMin = "absolute bottom-0 w-full h-[8vh]  box-border px-4";
 
-  const { videoOpen, setVideoOpen, deviseMobile, mdSearchBar } =
-    useContext(Context);
+  const {
+    videoOpen,
+    setVideoOpen,
+    deviseMobile,
+    mdSearchBar,
+    scrollZero,
+    setScrollZero,
+  } = useContext(Context);
+
+    const scrollContainer = useRef();
+
+    useEffect(() => {
+      if(scrollZero){
+        // scrollContainer.current.scrollTop = 0;
+      console.log("scroll");
+      }else{
+        console.log("not scroll")
+      }
+    }, [scrollZero]);
 
 
   return (
@@ -20,6 +38,7 @@ const Main = () => {
       }   `}
     >
       <div
+        ref={scrollContainer}
         className={` overflow-y-scroll lg:pb-[0] lg:px-0 lg:flex     h-[100%]   w-[100vw] hide-scrollbar ${
           !videoOpen ? "h-[92vh]" : ""
         } `}
@@ -33,7 +52,7 @@ const Main = () => {
         </Routes>
       </div>
 
-      {(window.innerWidth < 1025 && !videoOpen && !mdSearchBar) && (
+      {window.innerWidth < 1025 && !videoOpen && !mdSearchBar && (
         <Sidebar style={sideBarStyleMin} />
       )}
     </main>

@@ -13,6 +13,9 @@ const App = () => {
   const [commentShow, setCommentShow] = useState(false);
   const [showDiscription, setShowDiscription] = useState(false);
 
+  const [scrollZero , setScrollZero] = useState(false);
+
+
   
   const [category, setCategory] = useState(0);
 
@@ -52,6 +55,8 @@ const App = () => {
           setMdSearchBar,
           category,
           setCategory,
+          scrollZero,
+          setScrollZero,
         }}
       >
         {showNavBar && <Navbar />}

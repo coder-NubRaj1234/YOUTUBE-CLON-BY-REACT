@@ -71,10 +71,8 @@ const Sidebar = ({ style }) => {
             <p>Home</p>
           </div>
           <div
-            onClick={() => setCategory(42)}
-            className={`flex flex-col justify-center items-center gap-1 cursor-pointer lg:hover:bg-gray-200 lg:w-[4.2rem]  lg:rounded-xl ${
-              category === 42 ? "active" : ""
-            }  ${
+            onClick={() => setCategory(0)}
+            className={`flex flex-col justify-center items-center gap-1 cursor-pointer lg:hover:bg-gray-200 lg:w-[4.2rem]  lg:rounded-xl   ${
               sideBarState
                 ? "flex-row text-[0.9rem] lg:w-[90%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5"
                 : "lg:py-5 "
@@ -88,10 +86,8 @@ const Sidebar = ({ style }) => {
           </div>
 
           <div
-            onClick={() => setCategory("")}
+            onClick={() => setCategory(0)}
             className={`flex flex-col justify-center items-center gap-1 cursor-pointer lg:hover:bg-gray-200 lg:w-[4.2rem]  lg:rounded-xl ${
-              category === "" ? "active" : ""
-            }  ${
               sideBarState
                 ? "flex-row text-[0.9rem] lg:w-[90%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5  lg:pr-9"
                 : "lg:py-5"
@@ -122,10 +118,8 @@ const Sidebar = ({ style }) => {
                 </h2>
                 <div className="text-[0.8rem] w-full flex flex-col items-center">
                   <div
-                    onClick={() => setCategory(100)}
-                    className={`flex text-[0.9rem] lg:w-[100%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5 cursor-pointer lg:hover:bg-gray-200  lg:rounded-xl ${
-                      category === 100 ? "active" : ""
-                    }`}
+                    onClick={() => setCategory(0)}
+                    className={`flex text-[0.9rem] lg:w-[100%] lg:gap-5 lg:justify-start lg:pl-4 lg:py-2.5 cursor-pointer lg:hover:bg-gray-200  lg:rounded-xl `}
                   >
                     <FontAwesomeIcon
                       className="text-[1.3rem] lg:text-[1.1rem]  "
