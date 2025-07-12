@@ -11,7 +11,6 @@ const Videos = ({ deviseMobile }) => {
     setCommentShow,
     showDiscription,
     setShowNavBar,
-   
   } = useContext(Context);
   
 

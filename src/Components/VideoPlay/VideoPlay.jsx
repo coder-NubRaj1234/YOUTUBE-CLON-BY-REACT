@@ -298,13 +298,13 @@ const VideoPlay = ({ deviseMobile, categoryId, videoId }) => {
                     className="md:text-[0.9rem] extrate-info bg-[#f2f2f2] rounded-2xl p-2 text-[0.7rem] font-inter"
                   >
                     <div
-                      className={`relative whitespace-pre-line  ${showLessDiscIN_info}`}
+                      className={`relative whitespace-pre-line  pb-3 ${showLessDiscIN_info}`}
                     >
                       {videoData &&
                         discriptionManage(videoData.snippet.description)}
                       {deviseMobile &&
                         showLessDiscIN_info !== "overflow-auto h-auto" && (
-                          <p className="absolute bottom-0 right-0">...More</p>
+                          <p className="absolute -bottom-1 font-semibold right-0">...More</p>
                         )}
                     </div>
                   </div>
